@@ -9,7 +9,7 @@
 <script language="javascript">
 window.setInterval("showContent();",1000);
 window.setInterval("showOnline();",10000);
-var sysBBS="<span style='font-size:14px; line-height:30px;'>欢迎光临心之语聊天室，请遵守聊天室规则，不要使用不文明用语。</span><br><span style='line-height:22px;'>";
+var sysBBS="<span style='font-size:14px; line-height:30px;'>请遵守聊天室规则，不要使用不文明用语。</span><br><span style='line-height:22px;'>";
 //此处需要加?nocache="+new Date().getTime()，否则将出现在线人员列表不更新的情况
 function showOnline(){
 	var loader=new net.AjaxRequest("online.jsp?nocache="+new Date().getTime(),deal_online,onerror,"GET");
@@ -52,7 +52,7 @@ window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按
 <!--
 	function send(){	//验证聊天信息并发送
 		if(form1.to.value==""){
-			alert("请选择聊天对象！");return false;
+			set('所有人');
 		}
 		if(form1.content1.value==""){
 			alert("发送信息不可以为空！");form1.content1.focus();return false;
@@ -168,7 +168,7 @@ function set(selectPerson){	//自动添加聊天对象
     <td width="21" height="30" align="left">&nbsp;</td>
     <td width="549" align="left">
     
-    <input name="content1" type="text" size="70" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}">
+    <input name="content1" type="text" size="70" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}" onfocus="if(this.value!=''){this.value='';}">
       <input name="Submit2" type="button" class="btn_grey" value="发送" onClick="send()"></td>
     <td align="right"><input name="button_exit" type="button" class="btn_grey" value="退出聊天室" onClick="Exit()"></td>
     <td align="center">&nbsp;</td>

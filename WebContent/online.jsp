@@ -7,7 +7,7 @@ Vector vector=list.getList();
 int amount=0;
 %>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td height="32" align="center" class="word_orange ">欢迎来到心之语聊天室！</td></tr>
+  <tr><td height="32" align="center" class="word_orange ">欢迎进入24点程序员黄图发布室！</td></tr>
   <tr>
   <td height="23" align="center"><a  href="#" onclick="set('所有人')">所有人</a></td>
   </tr>  

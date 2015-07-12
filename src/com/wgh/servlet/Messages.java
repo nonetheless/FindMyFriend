@@ -32,8 +32,42 @@ public class Messages extends HttpServlet {
             this.sendMessages(request, response);
         } else if ("getMessages".equals(action)) {		//从XML文件中读取聊天信息
             this.getMessages(request, response);
+        } else if("leaveRoom".equals(action)){
+        	this.leaveRoom(request, response);
         }
     }
+    
+    
+    private void leaveRoom(HttpServletRequest request,
+			HttpServletResponse response) {
+    	response.setContentType("text/html;charset=UTF-8");
+    	ServletContext application=getServletContext();
+    	HttpSession session = request.getSession();
+    	String username = (String)session.getAttribute("username");
+    	UserInfo user=UserInfo.getInstance();		//获得UserInfo类的对象
+		Vector vector=user.getList();
+    	String sourceMessage="";
+    	if(null!=application.getAttribute("message")){
+    		sourceMessage=application.getAttribute("message").toString();
+    	}
+    	sourceMessage+="系统公告：<font color='gray'>" + username + "退出聊天室！</font><br>";
+    	application.setAttribute("message",sourceMessage);
+    	if(vector!=null&&vector.size()>0){
+			for(int i=0;i<vector.size();i++){
+				if(username.equals(vector.elementAt(i))){
+					vector.remove(i);
+					break;
+				}
+			}
+		}
+    	session.invalidate();
+    	try {
+    		request.getRequestDispatcher("index.jsp").forward(request, response);
+    	} catch (Exception ex) {
+    		Logger.getLogger(Messages.class.getName()).log(Level.SEVERE, null, ex);
+    	}
+	}
+    
     	// 将页面重定向到显示聊天信息的页面
 	public void getMessages(HttpServletRequest request,HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
@@ -78,10 +112,7 @@ public class Messages extends HttpServlet {
 		}
 		//保存用户信息
 		if(flag){
-			UserListener ul=new UserListener();					//创建UserListener的对象
-			ul.setUser(username);								//添加用户
-			user.addUser(ul.getUser());							//添加用户到UserInfo类的对象中
-			session.setAttribute("user",ul);						//将UserListener对象绑定到Session中
+			user.addUser(username);							//添加用户到UserInfo类的对象中
 			session.setAttribute("username",username);	//保存当前登录的用户名
 			session.setAttribute("loginTime",new Date().toLocaleString());		//保存登录时间
         ServletContext application=getServletContext();

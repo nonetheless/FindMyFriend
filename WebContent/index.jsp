@@ -79,7 +79,7 @@ function check(){
 	}
 }
 </script>
-<body background = "image/bg1.jpg">
+<body background = "images/bg1.jpg">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">

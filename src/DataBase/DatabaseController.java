@@ -35,8 +35,8 @@ public class DatabaseController {
 			}
 		}
 	}*/
-	public  static void  writeUserPO(String userID,String userName,String password,boolean inRoom){
-		String sql="insert into UserTable values('"+userID+"','"+userName+"','"+password+"','"+inRoom+"');";
+	public  static void  writeUserPO(String userID,String userName,String password,int state){
+		String sql="insert into UserTable values('"+userID+"','"+userName+"','"+password+"','"+state+"');";
 		try {
 			statWrite1.execute(sql);
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class DatabaseController {
 			while(rs.next()){
 				u.setUserID(ID);
 				u.setPassword(rs.getString("password"));
-				u.setInRoom(rs.getBoolean("inRoom"));
+				u.setState(rs.getInt("state"));
 				u.setUserName(rs.getString("userName"));
 			}
 		}catch (SQLException e) {
@@ -89,7 +89,7 @@ public class DatabaseController {
 		return u;
 	}
 	public static void setUserState(String ID){
-		String sql="update usertable set inRoom=true where userID='"+ID+"';";
+		String sql="update usertable set inRoom=1 where userID='"+ID+"';";
 		try {
 			statWrite1.execute(sql);
 		} catch (SQLException e) {
@@ -97,7 +97,7 @@ public class DatabaseController {
 		}
 	}
 	public static void ReturnState(String ID){
-		String sql="update usertable set inRoom=false where userID='"+ID+"';";
+		String sql="update usertable set inRoom=0 where userID='"+ID+"';";
 		try {
 			statWrite1.execute(sql);
 		} catch (SQLException e) {

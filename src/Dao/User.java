@@ -3,25 +3,19 @@ public class User {
 	private String userID;
 	private String userName;
 	private String password;
-	private boolean inRoom;
+	private int state;
 	
 	public User(String userID,String username,String password){
 		this.userID =userID;
 		this.userName = username;
 		this.password = password;
-		inRoom=false;
+		setState(0);
 	}
 	
 	public User() {
 		
 	}
 
-	public boolean isInRoom() {
-		return inRoom;
-	}
-	public void setInRoom(boolean inRoom) {
-		this.inRoom = inRoom;
-	}
 	public String getUserID(){
 		return userID;
 	}
@@ -39,5 +33,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 }

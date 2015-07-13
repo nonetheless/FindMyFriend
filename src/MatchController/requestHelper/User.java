@@ -1,6 +1,6 @@
-package MatchController.conditionHelper;
+package MatchController.requestHelper;
 
-import MatchController.conditionHelper.User;
+import MatchController.requestHelper.User;
 
 public class User {
 	private String id;

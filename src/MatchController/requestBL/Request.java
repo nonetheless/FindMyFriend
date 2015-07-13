@@ -1,10 +1,8 @@
-package MatchController.conditionBL;
+package MatchController.requestBL;
 
-import java.util.ArrayList;
-
-import MatchController.conditionHelper.ActivityPlace;
-import MatchController.conditionHelper.ActivityTime;
-import MatchController.conditionHelper.User;
+import MatchController.requestHelper.ActivityPlace;
+import MatchController.requestHelper.ActivityTime;
+import MatchController.requestHelper.User;
 
 
 public class Request {

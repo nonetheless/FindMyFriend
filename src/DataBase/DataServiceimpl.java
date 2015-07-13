@@ -83,9 +83,9 @@ public class DataServiceimpl implements DataService {
 	public void setStateOut(String ID) {
 		DatabaseController.ReturnState(ID);
 	}
-	public void leave(String userID,String roomID){
+	public void leave(String userID){
 		RoomUserListConcurrent rc=new RoomUserListConcurrent();
-		rc.leave(userID, roomID);
+		rc.leave(userID);
 	}
 	public void come(String userID,String roomID){
 		RoomUserListConcurrent rc=new RoomUserListConcurrent();

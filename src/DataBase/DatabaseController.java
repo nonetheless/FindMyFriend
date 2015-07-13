@@ -197,7 +197,7 @@ public class DatabaseController {
 		return rooms;
 	}
 	public static void leave(String userID,String roomID){
-		String sql="delete  "+roomID+" where userID='"+userID+"' and roomID='"+roomID+"';";
+		String sql="delete  "+roomID+" where userID='"+userID+"';";
 		try {
 			statWrite4.execute(sql);
 		} catch (SQLException e) {

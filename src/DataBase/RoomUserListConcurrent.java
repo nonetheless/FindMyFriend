@@ -16,9 +16,9 @@ public void come(String userID,String roomID){
 		e.printStackTrace();
 	}
 }
-public void leave(String userID,String roomID){
+public void leave(String userID){
 	try {
-		queue.put(new RoomUserPO(userID,roomID,0));
+		queue.put(new RoomUserPO(userID,"",0));
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

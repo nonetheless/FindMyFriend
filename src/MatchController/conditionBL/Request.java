@@ -9,12 +9,10 @@ import MatchController.conditionHelper.User;
 
 public class Request {
 	
-	private String roomID;
 	private Activity activity;
 	private ActivityTime time;
 	private ActivityPlace place;
 	private User creater;
-	private ArrayList<User> userList;
 	
 	public Activity getActivity() {
 		return activity;
@@ -34,12 +32,6 @@ public class Request {
 	public void setPlace(ActivityPlace place) {
 		this.place = place;
 	}
-	public ArrayList<User> getUserList() {
-		return userList;
-	}
-	public void setUserList(ArrayList<User> userList) {
-		this.userList = userList;
-	}
 	public User getCreater() {
 		return creater;
 	}
@@ -47,30 +39,12 @@ public class Request {
 		this.creater = creater;
 	}
 	
-	public void addToList(User newUser){
-		this.userList.add(newUser);
-	}
-	public void subInList(User newUser){
-		for(int i = 0;i<this.userList.size();i++){
-			User temp = userList.get(i);
-			if(temp.equals(newUser)){
-				this.userList.remove(i);
-				break;
-			}
-		}
-	}
 	public boolean equals(Request another){
 		if(this.activity.equals(another.getActivity())&&this.place.isNear(another.getPlace())&&this.time.isOk(another.getTime())){
 			return true;
 		}else{
 			return false;
 		}
-	}
-	public String getRoomID() {
-		return roomID;
-	}
-	public void setRoomID(String roomID) {
-		this.roomID = roomID;
 	}
 }
 

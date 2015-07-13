@@ -206,7 +206,7 @@ public class DatabaseController {
 		}
 	}
 	public static void come(String userID,String roomID){
-		String sql1="create table if not exists"+roomID +"userID varchar(20),roomID varchar(20));";
+		String sql1="create table if not exists"+roomID +"userID varchar(20),roomID varchar(20),primary key(userID));";
 		String sql2="insert into "+roomID+" values('"+userID+"','"+roomID+"');";
 		try {
 			statWrite4.execute(sql1);

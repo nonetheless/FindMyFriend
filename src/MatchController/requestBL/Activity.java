@@ -1,4 +1,4 @@
-package MatchController.conditionBL;
+package MatchController.requestBL;
 
 public enum Activity{
 	soccer,basketball,

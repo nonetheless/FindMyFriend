@@ -1,8 +1,8 @@
-package MatchController.conditionBL;
+package MatchController.requestBL;
 
 import java.util.ArrayList;
 
-import MatchController.conditionHelper.User;
+import MatchController.requestHelper.User;
 
 public class Room {
 	

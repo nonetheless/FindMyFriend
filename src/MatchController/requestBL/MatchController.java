@@ -1,17 +1,13 @@
-package MatchController.conditionBL;
+package MatchController.requestBL;
 
 import java.util.ArrayList;
 
 public class MatchController {
 	
 	private ArrayList<Room> roomList;
-	private ArrayList<Request> requestList;
 	
-	public ArrayList<Request> getRequestList() {
-		return requestList;
-	}
-	public void setRequestList(ArrayList<Request> requestList) {
-		this.requestList = requestList;
+	public MatchController(){
+		roomList = new ArrayList<Room>();
 	}
 	public ArrayList<Room> getRoomList() {
 		return roomList;

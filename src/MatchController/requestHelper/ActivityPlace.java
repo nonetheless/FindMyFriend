@@ -1,6 +1,6 @@
-package MatchController.conditionHelper;
+package MatchController.requestHelper;
 
-import MatchController.conditionHelper.ActivityPlace;
+import MatchController.requestHelper.ActivityPlace;
 
 public class ActivityPlace {
 

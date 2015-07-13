@@ -7,8 +7,9 @@ import MatchController.conditionHelper.ActivityTime;
 import MatchController.conditionHelper.User;
 
 
-public class Condition {
+public class Request {
 	
+	private String roomID;
 	private Activity activity;
 	private ActivityTime time;
 	private ActivityPlace place;
@@ -58,10 +59,18 @@ public class Condition {
 			}
 		}
 	}
-	public boolean equals(Condition another){
-		if(this.activity.equals(another.getActivity())){
+	public boolean equals(Request another){
+		if(this.activity.equals(another.getActivity())&&this.place.isNear(another.getPlace())&&this.time.isOk(another.getTime())){
 			return true;
+		}else{
+			return false;
 		}
+	}
+	public String getRoomID() {
+		return roomID;
+	}
+	public void setRoomID(String roomID) {
+		this.roomID = roomID;
 	}
 }
 

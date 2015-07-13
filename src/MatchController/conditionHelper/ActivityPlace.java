@@ -3,7 +3,8 @@ package MatchController.conditionHelper;
 import MatchController.conditionHelper.ActivityPlace;
 
 public class ActivityPlace {
-public static double nearDistance = 100;  // 两地相距多少时认为是相近
+
+	public static double nearDistance = 100;  // 两地相距多少时认为是相近
 	
 	private String name;
 	private double longi;  //经度

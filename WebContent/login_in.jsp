@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Sign up</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +79,7 @@ function check(){
 	}
 }
 </script>
-<body background = "images/bg1.jpg">
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -115,12 +115,12 @@ function check(){
 </nav>
 <div class="container">
 
-    <form name="form1" method = "post" action="Messages?action=loginRoom" onSubmit="return check()" class="form-signin">
+    <form name="form1" method = "post" action="/ChatRoom1/servlet/LoginServlet" onSubmit="return check()" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" name="username" id="inputEmail" class="login form-control" placeholder="Email address" required autofocus>
+                <label for="inputuserID" class="sr-only">UserID</label>
+        <input type="text" name="userID" id="userID" class="login form-control" placeholder="用户ID" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码" required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me

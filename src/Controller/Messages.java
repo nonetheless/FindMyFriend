@@ -1,6 +1,9 @@
 ﻿package Controller;
 
+import Dao.User;
 import Dao.UserInfo;
+import DataBase.DataService;
+import DataBase.DataServiceimpl;
 
 import java.io.*;
 import java.util.Date;
@@ -88,34 +91,14 @@ public class Messages extends HttpServlet {
             throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		String username=request.getParameter("username");	//获得登录用户名
-		UserInfo user=UserInfo.getInstance();		//获得UserInfo类的对象
+		String userID = request.getParameter("userID");
+		String password = request.getParameter("password");
+		DataService service = new DataServiceimpl();
 		session.setMaxInactiveInterval(3600);		//设置Session的过期时间为10分钟
-		Vector vector=user.getList();
-		boolean flag=true;		//标记是否登录的变量
-		//判断用户是否登录
-		System.out.println("vector的size："+vector.size());
-		if(vector!=null&&vector.size()>0){
-			for(int i=0;i<vector.size();i++){
-				System.out.println("vector"+i+":"+vector.elementAt(i)+" user:"+username);
-				if(username.equals(vector.elementAt(i))){
-					PrintWriter out;
-					try {
-						out = response.getWriter();
-						out.println("<script language='javascript'>alert('该用户已经登录');window.location.href='index.jsp';</script>");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					flag=false;
-					break;
-				}
-			}
-		}
+		
 		//保存用户信息
-		if(flag){
-			user.addUser(username);							//添加用户到UserInfo类的对象中
-			session.setAttribute("username",username);	//保存当前登录的用户名
-			session.setAttribute("loginTime",new Date().toLocaleString());		//保存登录时间
+		session.setAttribute("username",username);	//保存当前登录的用户名
+		session.setAttribute("loginTime",new Date().toLocaleString());		//保存登录时间
         ServletContext application=getServletContext();
 
         String sourceMessage="";
@@ -131,7 +114,6 @@ public class Messages extends HttpServlet {
             Logger.getLogger(Messages.class.getName()).log(Level.SEVERE, null, ex);
         }
 		}
-	}
 
 	// 发送聊天信息
     public void sendMessages(HttpServletRequest request, HttpServletResponse response)

@@ -15,6 +15,21 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>Controller.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SendServlet</servlet-name>
+    <servlet-class>Controller.SendServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetServlet</servlet-name>
+    <servlet-class>Controller.GetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LeaveServlet</servlet-name>
+    <servlet-class>Controller.LeaveServlet</servlet-class>
+  </servlet>
+
+
+
 
 
   <servlet-mapping>
@@ -29,9 +44,21 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/servlet/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SendServlet</servlet-name>
+    <url-pattern>/servlet/SendServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetServlet</servlet-name>
+    <url-pattern>/servlet/GetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LeaveServlet</servlet-name>
+    <url-pattern>/servlet/LeaveServlet</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>Utils.CharacterEncodingFilter</filter-class>
+    <filter-class>Util.CharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.Record;
 import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
@@ -43,16 +44,10 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username); // 保存当前登录的用户名
 				session.setAttribute("loginTime", new Date().toLocaleString()); // 保存登录时间
-				ServletContext application = getServletContext();
-				String sourceMessage = "";
-				if (null != application.getAttribute("message")) {
-					sourceMessage = application.getAttribute("message")
-							.toString();
-				}
-				sourceMessage += "系统公告：<font color='gray'>" + username
-						+ "进入聊天室！</font><br>";
-				application.setAttribute("message", sourceMessage);
-				request.getRequestDispatcher("/login_ok.jsp").forward(request,
+				String roomID = request.getParameter("roomID");
+				Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"进入房间");
+				service.writeChattingPO(record);
+				request.getRequestDispatcher("/main.jsp").forward(request,
 						response);
 			}
 		}

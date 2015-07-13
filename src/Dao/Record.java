@@ -13,6 +13,11 @@ public class Record {
 		this.speaker=speaker;
 		this.content=content;
 	}
+	
+	public Record(){
+		
+	}
+	
 	public String getChatroom() {
 		return chatroomID;
 	}

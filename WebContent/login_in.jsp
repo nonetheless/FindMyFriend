@@ -105,7 +105,7 @@ function check(){
 
                 </li>
                 <li>
-                    <a href="#">注册</a>
+                    <a href="/ChatRoom1/register.jsp">注册</a>
                 </li>
 
 

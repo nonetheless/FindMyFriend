@@ -4,12 +4,14 @@
 <html>
 <head>
 <title>聊天室</title>
-<link href="CSS/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/style.css">    
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/jquery.mobile.flatui.css" />
 <script language="javascript" src="JS/AjaxRequest.js"></script>
 <script language="javascript">
 window.setInterval("showContent();",1000);
 window.setInterval("showOnline();",10000);
-var sysBBS="<span style='font-size:14px; line-height:30px;'>请遵守聊天室规则，不要使用不文明用语。</span><br><span style='line-height:22px;'>";
+var sysBBS="<span style='font-size:14px; line-height:30px;'>欢迎光临心之语聊天室，请遵守聊天室规则，不要使用不文明用语。</span><br><span style='line-height:22px;'>";
 //此处需要加?nocache="+new Date().getTime()，否则将出现在线人员列表不更新的情况
 function showOnline(){
 	var loader=new net.AjaxRequest("online.jsp?nocache="+new Date().getTime(),deal_online,onerror,"GET");
@@ -42,44 +44,28 @@ window.onload=function(){
 	showOnline();						//当页面载入后显示在线人员列表
 }
 
-window.onbeforeunload=function(){    
-	Exit();		//当用户单击浏览器中的关闭按钮时执行退出操作
-    /* if(event.clientY<0 && event.clientX>document.body.scrollWidth){  
+window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按钮时执行退出操作
+    if(event.clientY<0 && event.clientX>document.body.scrollWidth){  
          Exit();                    		//执行退出操作
-    } */
+    }
 }
 </script>
 <script language="javascript">
 <!--
 	function send(){	//验证聊天信息并发送
-		if(form1.to.value==""){
-			set('所有人');
-		}
-		if(form1.content1.value==""){
-			alert("发送内容不能为空！");form1.content1.focus();return false;
-		}
-		var param="from="+form1.from.value+"&face="+form1.face.value+"&color="+form1.color.value+"&to="+form1.to.value+"&content="+	form1.content1.value;
-        var loader=new net.AjaxRequest("Messages?action=sendMessage",deal_send,onerror,"POST",param);
 
+		if(form1.content1.value==""){
+			alert("发送信息不可以为空！");form1.content1.focus();return false;
+		}
+		var param="from="+form1.from.value+"&content="+	form1.content1.value;
+        var loader=new net.AjaxRequest("Messages?action=sendMessage",deal_send,onerror,"POST",param);
+        var el=document.getElementById("content1");
+        el.value="";
 	}
 function deal_send(){
 content.innerHTML=sysBBS+this.req.responseText+"</span>";
 }
-	function Exit(){
-		window.location.href="leave.jsp";
-		alert("欢迎您下次光临！");
-	}
 -->
-</script>
-<script language="javascript">
-
-function set(selectPerson){	//自动添加聊天对象
-	if(selectPerson!="${username}"){
-			form1.to.value=selectPerson;
-	}else{
-		alert("请重新选择聊天对象！");
-	}
-}
 </script>
 <script type="text/javascript">
 	function checkScrollScreen(){
@@ -91,86 +77,59 @@ function set(selectPerson){	//自动添加聊天对象
         document.getElementById('content').scrollTop = document.getElementById('content').scrollHeight*2;    
     }
     setTimeout('checkScrollScreen()',500);
-}	
+}
+	
 </script>
 	
 </head>
 <body>
+<div data-role="page">
 
-<table width="778" height="150" border="0" align="center" cellpadding="0" cellspacing="0" background="images/top.jpg">
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-<table width="778" height="276" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="165" valign="top" bgcolor="#f6fded" id="online" style="padding:5px">在线人员列表</td>
-    <td width="613"  height="200px" valign="top" background="images/main_bj.jpg" bgcolor="#FFFFFF" style="padding:5px; ">
-	<div style="height:290px; overflow:hidden" id="content">聊天内容</div>
-	</td>
-  </tr>
-</table>
-<table width="778" height="95" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE" background="images/bottom.jpg">
+    <div class="header linear-g">
+        <a href="#panel-left" data-iconpos="notext" class="glyphicon glyphicon-th-large col-xs-2 text-right"> </a>
+        <a id="1" class="text-center col-xs-8">smwell.com</a>
+        <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
+    </div>
 
+    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left">
+	<p class="text-center lead" id="online"> &nbsp;用户列表</p>
+    </div>
+    
+    <div data-role="panel" data-position="right" data-display="push" class="user_box text-center dn linear-g" id="panel-right">
+        <div class="u_info">
+            <img class="avatar" src="images/avatar.png" alt="头像">
+            <span class="username">李任我行</span>
+        </div>
+        <ul class="user_menu">
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-lock"> </span> &nbsp;修改密码</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-picture"> </span> &nbsp;上传头像</a></li>
+          <li class="menu"><a href="#"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出</a></li>
+        </ul>
+    </div>
+    
+
+    <div data-role="content" class="container" role="main">
+      <table height="100">
+      <tr>
+        <td>
+	    <div style="height:290px; overflow:hidden" id="content">聊天内容</div>
+	    </td>     
+	  </tr>
+      </table>
+    </div>
+
+<table width="778" height="95" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
 <form action="" name="form1" method="post" >
   <tr>
-    <td height="30" align="left">&nbsp;</td>
-    <td height="37" align="left"><input name="from" type="hidden" value="${username}">[${username} ]对
-      <input name="to" type="text" value="" size="35" readonly="readonly">
-表情
-<select name="face" class="wenbenkuang">
-  <option  value="无表情的">无表情的</option>
-  <option value="微笑着" selected>微笑着</option>
-  <option value="笑呵呵地">笑呵呵地</option>
-  <option value="热情的">热情的</option>
-  <option value="温柔的">温柔的</option>
-  <option value="红着脸">红着脸</option>
-  <option value="幸福的">幸福的</option>
-  <option value="嘟着嘴">嘟着嘴</option>
-  <option value="热泪盈眶的">热泪盈眶的</option>
-  <option value="依依不舍的">依依不舍的</option>
-  <option value="得意的">得意的</option>
-  <option value="神秘兮兮的">神秘兮兮的</option>
-  <option value="恶狠狠的">恶狠狠的</option>
-  <option value="大声的">大声的</option>
-  <option value="生气的">生气的</option>
-  <option value="幸灾乐祸的">幸灾乐祸的</option>
-  <option value="同情的">同情的</option>
-  <option value="遗憾的">遗憾的</option>
-  <option value="正义凛然的">正义凛然的</option>
-  <option value="严肃的">严肃的</option>
-  <option value="慢条斯理的">慢条斯理的</option>
-  <option value="无精打采的">无精打采的</option>
-</select>
-说：</td>
-    <td width="189" align="left"> &nbsp;&nbsp;字体颜色：
-      <select name="color" size="1" class="wenbenkuang" id="select">
-        <option selected>默认颜色</option>
-        <option style="color:#FF0000" value="FF0000">红色热情</option>
-        <option style="color:#0000FF" value="0000ff">蓝色开朗</option>
-        <option style="color:#ff00ff" value="ff00ff">桃色浪漫</option>
-        <option style="color:#009900" value="009900">绿色青春</option>
-        <option style="color:#009999" value="009999">青色清爽</option>
-        <option style="color:#990099" value="990099">紫色拘谨</option>
-        <option style="color:#990000" value="990000">暗夜兴奋</option>
-        <option style="color:#000099" value="000099">深蓝忧郁</option>
-        <option style="color:#999900" value="999900">卡其制服</option>
-        <option style="color:#ff9900" value="ff9900">镏金岁月</option>
-        <option style="color:#0099ff" value="0099ff">湖波荡漾</option>
-        <option style="color:#9900ff" value="9900ff">发亮蓝紫</option>
-        <option style="color:#ff0099" value="ff0099">爱的暗示</option>
-        <option style="color:#006600" value="006600">墨绿深沉</option>
-        <option style="color:#999999" value="999999">烟雨蒙蒙</option>
-      </select></td>
-    <td width="19" align="left"><input name="scrollScreen" type="checkbox" class="noborder" id="scrollScreen" onClick="checkScrollScreen()" value= "1" checked></td>
-  </tr>
-  <tr>
-    <td width="21" height="30" align="left">&nbsp;</td>
+    <td height="37" align="left"><input name="from" type="hidden" value="${username}">
     <td width="549" align="left">
     
-    <input name="content1"  type="text" size="70" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}" onfocus="if(this.value!=''){this.value='';}">
-      <input name="Submit2" type="button" class="btn_grey" value="发送" onClick="send()"></td>
-    <td align="right"><input name="button_exit" type="button" class="btn_grey" value="退出聊天室" onClick="Exit()"></td>
+    <textarea name="content1"  id="content1" style="resize:none;width:500px" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></textarea>
+    </td>
+    <td>
+      <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button>
+      </td>>
     <td align="center">&nbsp;</td>
   </tr>
   <tr>
@@ -180,5 +139,24 @@ function set(selectPerson){	//自动添加聊天对象
   </tr>
 </form>
 </table>
+</div>
+
+<script type="text/javascript" src="bootstrap/css/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/css/JS/jquery.mobile-1.4.0-rc.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/* 
+		** 不同页面切换转场效果
+		** $.mobile.changePage ('/test.html', 'slide/pop/fade/slideup/slidedown/flip/none', false, false);
+		*/
+		$('.list-group-item,.menu a').click(function(){
+			$.mobile.changePage($(this).attr('href'), {
+				transition : 'flip', //转场效果
+				reverse : true       //默认为false,设置为true时将导致一个反方向的转场
+			});	
+		});
+	});
+</script>
+
 </body>
 </html>

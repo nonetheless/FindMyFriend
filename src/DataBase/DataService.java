@@ -13,7 +13,7 @@ public interface DataService {
 	public void writeUserPO(User up);
 	public void updateUserPO(String ID,String name);
 	public void updateNum(String ID);
-	public void wtiteChattingPO(Record cp);
+	public void writeChattingPO(Record cp);
 	public void writeRoomPO(Room rp);
 	public boolean isRoomExist(String roomID);
 	public ArrayList<String> getTwentyMess(String ID);

@@ -1,0 +1,41 @@
+package Controller;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import Dao.Record;
+import DataBase.DataService;
+import DataBase.DataServiceimpl;
+
+public class LeaveServlet extends HttpServlet {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		DataService service = new DataServiceimpl();
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("username");
+		String roomID = request.getParameter("roomID");
+		Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"离开房间");
+		service.writeChattingPO(record);
+		session.invalidate();
+		request.getRequestDispatcher("/login_in.jsp").forward(request,
+				response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

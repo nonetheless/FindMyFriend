@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ page import="com.wgh.model.UserInfo"%>
+<%@ page import="Dao.UserInfo"%>
 <%@ page import="java.util.*"%>
 <%
 UserInfo list=UserInfo.getInstance();

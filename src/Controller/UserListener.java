@@ -1,5 +1,5 @@
-﻿package com.wgh.servlet;
-import com.wgh.model.UserInfo;
+﻿package Controller;
+import Dao.UserInfo;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

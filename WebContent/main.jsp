@@ -42,10 +42,11 @@ window.onload=function(){
 	showOnline();						//当页面载入后显示在线人员列表
 }
 
-window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按钮时执行退出操作
-    if(event.clientY<0 && event.clientX>document.body.scrollWidth){  
+window.onbeforeunload=function(){    
+	Exit();		//当用户单击浏览器中的关闭按钮时执行退出操作
+    /* if(event.clientY<0 && event.clientX>document.body.scrollWidth){  
          Exit();                    		//执行退出操作
-    }
+    } */
 }
 </script>
 <script language="javascript">
@@ -55,7 +56,7 @@ window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按
 			set('所有人');
 		}
 		if(form1.content1.value==""){
-			alert("发送信息不可以为空！");form1.content1.focus();return false;
+			alert("发送内容不能为空！");form1.content1.focus();return false;
 		}
 		var param="from="+form1.from.value+"&face="+form1.face.value+"&color="+form1.color.value+"&to="+form1.to.value+"&content="+	form1.content1.value;
         var loader=new net.AjaxRequest("Messages?action=sendMessage",deal_send,onerror,"POST",param);
@@ -90,12 +91,12 @@ function set(selectPerson){	//自动添加聊天对象
         document.getElementById('content').scrollTop = document.getElementById('content').scrollHeight*2;    
     }
     setTimeout('checkScrollScreen()',500);
-}
-	
+}	
 </script>
 	
 </head>
 <body>
+
 <table width="778" height="150" border="0" align="center" cellpadding="0" cellspacing="0" background="images/top.jpg">
   <tr>
     <td>&nbsp;</td>
@@ -107,7 +108,6 @@ function set(selectPerson){	//自动添加聊天对象
     <td width="613"  height="200px" valign="top" background="images/main_bj.jpg" bgcolor="#FFFFFF" style="padding:5px; ">
 	<div style="height:290px; overflow:hidden" id="content">聊天内容</div>
 	</td>
-
   </tr>
 </table>
 <table width="778" height="95" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE" background="images/bottom.jpg">
@@ -168,7 +168,7 @@ function set(selectPerson){	//自动添加聊天对象
     <td width="21" height="30" align="left">&nbsp;</td>
     <td width="549" align="left">
     
-    <input name="content1" type="text" size="70" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}" onfocus="if(this.value!=''){this.value='';}">
+    <input name="content1"  type="text" size="70" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}" onfocus="if(this.value!=''){this.value='';}">
       <input name="Submit2" type="button" class="btn_grey" value="发送" onClick="send()"></td>
     <td align="right"><input name="button_exit" type="button" class="btn_grey" value="退出聊天室" onClick="Exit()"></td>
     <td align="center">&nbsp;</td>

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*"%>
-<%@ page import="com.wgh.model.UserInfo"%>
-<%@ page import="com.wgh.servlet.UserListener"%>
+<%@ page import="Dao.UserInfo"%>
+<%@ page import="Controller.UserListener"%>
 <%
 
 String username=request.getParameter("username");	//获得登录用户名

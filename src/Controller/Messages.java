@@ -1,6 +1,7 @@
-﻿package com.wgh.servlet;
+﻿package Controller;
 
-import com.wgh.model.UserInfo;
+import Dao.UserInfo;
+
 import java.io.*;
 import java.util.Date;
 import java.util.Random;
@@ -52,7 +53,7 @@ public class Messages extends HttpServlet {
     	}
     	sourceMessage+="系统公告：<font color='gray'>" + username + "退出聊天室！</font><br>";
     	application.setAttribute("message",sourceMessage);
-    	if(vector!=null&&vector.size()>0){
+    	if(vector!=null&&vector.size()>0&&username!=null){
 			for(int i=0;i<vector.size();i++){
 				if(username.equals(vector.elementAt(i))){
 					vector.remove(i);
@@ -89,7 +90,7 @@ public class Messages extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username=request.getParameter("username");	//获得登录用户名
 		UserInfo user=UserInfo.getInstance();		//获得UserInfo类的对象
-		session.setMaxInactiveInterval(600);		//设置Session的过期时间为10分钟
+		session.setMaxInactiveInterval(3600);		//设置Session的过期时间为10分钟
 		Vector vector=user.getList();
 		boolean flag=true;		//标记是否登录的变量
 		//判断用户是否登录

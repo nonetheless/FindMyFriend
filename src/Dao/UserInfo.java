@@ -1,4 +1,4 @@
-﻿package com.wgh.model;
+﻿package Dao;
 
 import java.util.Vector;
 

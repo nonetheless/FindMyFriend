@@ -16,7 +16,14 @@ import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class LoginServlet extends HttpServlet {
-
+	static{
+		if(!RegisterServlet.isrun){
+			DataService service = new DataServiceimpl();
+			service.runDataBase();
+			RegisterServlet.isrun = true;
+		}
+	}
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userID = request.getParameter("userID");

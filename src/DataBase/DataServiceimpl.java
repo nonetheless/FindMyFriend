@@ -9,14 +9,17 @@ import Dao.User;
 public class DataServiceimpl implements DataService {
 	Concurrent ucon =new UserConcurrent();
 	Concurrent rcon=new RoomConcurrent();
+	Concurrent rucon=new RoomUserListConcurrent();
 	public void runDataBase() {
 		DatabaseController.setConnection();
 		//Concurrent ucon =new UserConcurrent();
 		//Concurrent rcon=new RoomConcurrent();
 		Thread t1=new Thread(ucon);
 		Thread t2=new Thread(rcon);
+		Thread t3=new Thread(rucon);
 		t1.start();
 		t2.start();
+		t3.start();
 	}
 
 	public boolean IsUserExist(String UserID,String password) {
@@ -79,5 +82,19 @@ public class DataServiceimpl implements DataService {
 	@Override
 	public void setStateOut(String ID) {
 		DatabaseController.ReturnState(ID);
+	}
+	public void leave(String userID,String roomID){
+		RoomUserListConcurrent rc=new RoomUserListConcurrent();
+		rc.leave(userID, roomID);
+	}
+	public void come(String userID,String roomID){
+		RoomUserListConcurrent rc=new RoomUserListConcurrent();
+		rc.come(userID, roomID);
+	}
+	public void end(String roomID){
+		DatabaseController.end(roomID);
+	}
+	public ArrayList<String> search(String roomID){
+		return DatabaseController.search(roomID);
 	}
 }

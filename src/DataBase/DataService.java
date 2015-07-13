@@ -21,4 +21,8 @@ public interface DataService {
 	public User getUserByID(String ID);
 	public void setStateIn(String ID);
 	public void setStateOut(String ID);
+	public void leave(String userID,String roomID);
+	public void come(String userID,String roomID);
+	public void end(String roomID);
+	public ArrayList<String> search(String roomID);
 }

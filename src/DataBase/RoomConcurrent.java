@@ -22,6 +22,14 @@ public class RoomConcurrent extends Concurrent implements Runnable{
 			if(rp!=null){
 				DatabaseController.writeRoomPO(rp.getRoomID(),rp.getRoomName(),rp.getStartTime(),rp.getEndTime(),rp.getActivity(),rp.getLocation(),rp.getPnum());
 			}
+			else{
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

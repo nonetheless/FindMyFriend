@@ -11,6 +11,7 @@ public class DatabaseController {
 	static Statement statWrite1;
 	static Statement statWrite2;
 	static Statement statWrite3;
+	static Statement statWrite4;
 	static Statement statReader;
 	/*public static void main(String[] args) {
 		Connection conn = null;
@@ -50,6 +51,7 @@ public class DatabaseController {
 		statWrite1=connWrite.createStatement();
 		statWrite2=connWrite.createStatement();
 		statWrite3=connWrite.createStatement();
+		statWrite4=connWrite.createStatement();
 		Connection connReader = DriverManager.getConnection("jdbc:mysql://114.212.43.37:3306/yw","wjc","wjc");
 		statReader=connReader.createStatement();
 		}
@@ -194,9 +196,55 @@ public class DatabaseController {
 		}
 		return rooms;
 	}
+	public static void leave(String userID,String roomID){
+		String sql="delete  "+roomID+" where userID='"+userID+"' and roomID='"+roomID+"';";
+		try {
+			statWrite4.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void come(String userID,String roomID){
+		String sql1="create table if not exists"+roomID +"userID varchar(20),roomID varchar(20));";
+		String sql2="insert into "+roomID+" values('"+userID+"','"+roomID+"');";
+		try {
+			statWrite4.execute(sql1);
+			statWrite4.execute(sql2);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void end(String roomID){
+
+		String sql="drop table  "+roomID+" ;";
+		try {
+			statWrite4.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	public static ArrayList<String> search(String roomID){
+		ArrayList<String> result=new ArrayList<String>();
+		String sql="select *  where  roomID='"+roomID+"';";
+		try {
+			ResultSet rs=statReader.executeQuery(sql);
+			while(rs.next()){
+				result.add(rs.getString("roomID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 	public static void main(String[]args){
 		setConnection();
 		writeChattingPO("10000","1990-10-23","333","dafeiji","509");
 		System.out.print("Y");
 	}
+	
 }

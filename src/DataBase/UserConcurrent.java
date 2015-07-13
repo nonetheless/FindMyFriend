@@ -21,6 +21,14 @@ public class UserConcurrent extends Concurrent implements Runnable{
 			if(up!=null){
 				DatabaseController.writeUserPO(up.getUserID(), up.getUserName(),up.getPassword(),up.getState());
 			}
+			else{
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

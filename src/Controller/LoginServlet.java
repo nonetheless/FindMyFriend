@@ -35,9 +35,10 @@ public class LoginServlet extends HttpServlet {
 			out.print("账户/用户密码错误！");
 		} else {
 			User user = service.getUserByID(userID);
-			if (user.isInRoom()) {
+			if (user.getState()==1) {
 				out.write("请先退出其他房间");
 			} else {
+				user.setState(1);
 				String username = user.getUserName();
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username); // 保存当前登录的用户名
@@ -51,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 				sourceMessage += "系统公告：<font color='gray'>" + username
 						+ "进入聊天室！</font><br>";
 				application.setAttribute("message", sourceMessage);
-				request.getRequestDispatcher("login_ok.jsp").forward(request,
+				request.getRequestDispatcher("/login_ok.jsp").forward(request,
 						response);
 			}
 		}

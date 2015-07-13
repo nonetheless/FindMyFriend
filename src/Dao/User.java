@@ -10,6 +10,7 @@ public class User {
 		this.userName = username;
 		this.password = password;
 		setState(0);
+		
 	}
 	
 	public User() {

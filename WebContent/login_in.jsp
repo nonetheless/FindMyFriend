@@ -101,7 +101,7 @@ function check(){
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="active">登陆</a>
+                    <a href="/ChatRoom1/login_in.jsp" class="active">登陆</a>
 
                 </li>
                 <li>

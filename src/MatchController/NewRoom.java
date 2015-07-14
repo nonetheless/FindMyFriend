@@ -12,12 +12,12 @@ public class NewRoom {
 	private ArrayList<NewUser> userList;
 	
 	public NewRoom(Room room){
-		this.createRequest = new Request(room.getActivity(),room.getStartTime(),room.getEndTime(),room.getStartTime().split("~")[0],room.getLocation());
+		this.createRequest = new Request(room.getActivity(),room.getStartTime(),room.getEndTime(),room.getStartTime().split(" ")[0],room.getLocation());
 		this.id = room.getRoomID();
 		userList = new ArrayList<NewUser>();
 	}
 	public NewRoom(String id,String start,String end,String activity,String location){
-		this.createRequest = new Request(activity,start.split(" ")[1],end.split(" ")[1],start.split(" ")[0],location);
+		this.createRequest = new Request(activity,start.split(" ")[1],end.split(" ")[1],end.split(" ")[0],location);
 		this.id = id;
 		userList = new ArrayList<NewUser>();
 	}

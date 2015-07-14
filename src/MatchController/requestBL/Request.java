@@ -1,8 +1,9 @@
 package MatchController.requestBL;
 
+import Dao.User;
 import MatchController.requestHelper.ActivityPlace;
 import MatchController.requestHelper.ActivityTime;
-import MatchController.requestHelper.User;
+import MatchController.requestHelper.NewUser;
 
 
 public class Request {
@@ -10,8 +11,20 @@ public class Request {
 	private Activity activity;
 	private ActivityTime time;
 	private ActivityPlace place;
-	private User creater;
+	private NewUser creater;
 	
+	public Request(String activity,String start,String end,String date,User user,String location){
+		this.activity = Activity.valueOf(activity);
+		this.time = new ActivityTime(start,end,date);
+		this.creater = new NewUser(user);
+		this.place = new ActivityPlace(location);
+	}
+	public Request(String activity,String start,String end,String date,String location){
+		this.activity = Activity.valueOf(activity);
+		this.time = new ActivityTime(start,end,date);
+		//this.creater = new NewUser(user);
+		this.place = new ActivityPlace(location);
+	}
 	public Activity getActivity() {
 		return activity;
 	}
@@ -30,10 +43,10 @@ public class Request {
 	public void setPlace(ActivityPlace place) {
 		this.place = place;
 	}
-	public User getCreater() {
+	public NewUser getCreater() {
 		return creater;
 	}
-	public void setCreater(User creater) {
+	public void setCreater(NewUser creater) {
 		this.creater = creater;
 	}
 	

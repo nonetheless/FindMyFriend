@@ -10,6 +10,10 @@ public class ActivityPlace {
 	private double longi;  //经度
 	private double lati;   //纬度
 	
+	public ActivityPlace(String location){
+		this.name = location;
+		// get longi,lati;
+	}
 	public String getName() {
 		return name;
 	}
@@ -33,7 +37,7 @@ public class ActivityPlace {
 		return Math.sqrt(Math.pow((this.getLati()-another.getLati()), 2)+Math.pow((this.getLongi()-another.getLongi()), 2));
 	}
 	public boolean isNear(ActivityPlace another){
-		if(this.getDistanceFrom(another)<= nearDistance){
+		if(this.getDistanceFrom(another)<= nearDistance||this.name.equals(another.getName())){
 			return true;
 		}else{
 			return false;

@@ -1,10 +1,15 @@
 package MatchController.requestHelper;
 
-import MatchController.requestHelper.User;
+import Dao.User;
 
-public class User {
+public class NewUser {
 	private String id;
 	private String nickName;
+	
+	public NewUser(User user){
+		this.id = user.getUserID();
+		this.nickName = user.getUserName();
+	}
 	public String getId() {
 		return id;
 	}
@@ -17,7 +22,7 @@ public class User {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public boolean equals(User another){
+	public boolean equals(NewUser another){
 		if(this.id.equals(another.getId())){
 			return true;
 		}else{

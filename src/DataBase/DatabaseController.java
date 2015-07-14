@@ -278,5 +278,12 @@ public class DatabaseController {
 		//writeChattingPO("10000","1990-10-23","333","dafeiji","509");
 		//System.out.print("Y");
 	}
-	
+	public static void deleteRoom(String ID){
+		String sql3="delete from roomtable where roomID='"+ID+"';";
+		try {
+			statWrite2.execute(sql3);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

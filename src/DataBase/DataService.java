@@ -25,4 +25,5 @@ public interface DataService {
 	public void leave(String userID );
 	public void come(String userID,String roomID);
 	public ArrayList<String> search(String roomID);
+	public void deleteRoom(String ID);
 }

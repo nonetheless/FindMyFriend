@@ -79,6 +79,12 @@ public class DataServiceimpl implements DataService {
 		return DatabaseController.search(roomID);
 	}
 
+	@Override
+	public void deleteRoom(String ID) {
+		DatabaseController.deleteRoom(ID);
+		
+	}
+
 	//public void subNum(String ID) {
 		//DatabaseController.subNum(ID);
 	//}

@@ -1,6 +1,5 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="safe.jsp"%>
 <html>
 <head>
 <title>聊天室</title>
@@ -11,7 +10,7 @@
 <script language="javascript">
 window.setInterval("showContent();",1000);
 window.setInterval("showOnline();",10000);
-var sysBBS="<span style='font-size:14px; line-height:30px;'>欢迎光临心之语聊天室，请遵守聊天室规则，不要使用不文明用语。</span><br><span style='line-height:22px;'>";
+var sysBBS="<li>欢迎光临心之语聊天室，请遵守聊天室规则，不要使用不文明用语。</li>";
 //此处需要加?nocache="+new Date().getTime()，否则将出现在线人员列表不更新的情况
 function showOnline(){
 	var loader=new net.AjaxRequest("online.jsp?nocache="+new Date().getTime(),deal_online,onerror,"GET");
@@ -19,11 +18,11 @@ function showOnline(){
 function showContent(){
 	var loader1=new net.AjaxRequest("Messages?action=Get&nocache="+new Date().getTime(),deal_content,onerror,"GET");
 }
-function onerror(){
-	//alert("很抱歉，服务器出现错误，当前窗口将关闭！");
+/* function onerror(){
+	alert("很抱歉，服务器出现错误，当前窗口将关闭！");
 	window.opener=null;
 	window.close();
-}
+} */
 function deal_online(){
 	online.innerHTML=this.req.responseText;
 }
@@ -34,7 +33,7 @@ function deal_content(){
 		//alert("您的账户已经过期，请重新登录！");
 		Exit();
 	}else{
-		content.innerHTML=sysBBS+returnValue+"</span>";
+		content.innerHTML=sysBBS+"<li>"+returnValue+"</li>";
 		document.getElementById('content').scrollTop = document.getElementById('content').scrollHeight*2;	//当聊天信息超过一屏时，设置最先发送的聊天信息不显示
 	}
 }
@@ -63,7 +62,7 @@ window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按
         el.value="";
 	}
 function deal_send(){
-content.innerHTML=sysBBS+this.req.responseText+"</span>";
+content.innerHTML=sysBBS+this.req.responseText;
 }
 -->
 </script>
@@ -87,7 +86,7 @@ content.innerHTML=sysBBS+this.req.responseText+"</span>";
 
     <div class="header linear-g">
         <a href="#panel-left" data-iconpos="notext" class="glyphicon glyphicon-th-large col-xs-2 text-right"> </a>
-        <a id="1" class="text-center col-xs-8">smwell.com</a>
+        <a id="1" class="text-center col-xs-8">聊天室</a>
         <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
     </div>
 
@@ -98,7 +97,7 @@ content.innerHTML=sysBBS+this.req.responseText+"</span>";
     <div data-role="panel" data-position="right" data-display="push" class="user_box text-center dn linear-g" id="panel-right">
         <div class="u_info">
             <img class="avatar" src="images/avatar.png" alt="头像">
-            <span class="username">李任我行</span>
+            <span class="username">${username}</span>
         </div>
         <ul class="user_menu">
           <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置</a></li>
@@ -109,27 +108,19 @@ content.innerHTML=sysBBS+this.req.responseText+"</span>";
     </div>
     
 
-    <div data-role="content" class="container" role="main">
-      <table height="100">
-      <tr>
-        <td>
-	    <div style="height:290px; overflow:hidden" id="content">聊天内容</div>
-	    </td>     
-	  </tr>
-      </table>
-    </div>
-
-<table width="778" height="95" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
-<form action="" name="form1" method="post" >
+	<div data-role="content" class="container" role="main">
+	<ul id="content" class="content-reply-box mg10"  style="height:450px; overflow:hidden">用户聊天</ul>
+<table width="778" height="50" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
+<form action="" name="form1" method="post">
   <tr>
-    <td height="37" align="left"><input name="from" type="hidden" value="${username}">
+    <td height="17" align="left"><input name="from" type="hidden" value="${username}">
     <td width="549" align="left">
     
     <textarea name="content1"  id="content1" style="resize:none;width:500px" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></textarea>
     </td>
     <td>
       <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button>
-      </td>>
+      </td>
     <td align="center">&nbsp;</td>
   </tr>
   <tr>
@@ -141,8 +132,8 @@ content.innerHTML=sysBBS+this.req.responseText+"</span>";
 </table>
 </div>
 
-<script type="text/javascript" src="bootstrap/css/jquery.min.js"></script>
-<script type="text/javascript" src="bootstrap/css/JS/jquery.mobile-1.4.0-rc.1.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.mobile-1.4.0-rc.1.js"></script>
 <script type="text/javascript">
 	$(function(){
 		/* 

@@ -203,7 +203,7 @@ public class DatabaseController {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
 				i++;
-				String temp=rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("time")+"//"+rs.getString("content");
+				String temp=rs.getString("roomID")+"//"+rs.getString("time")+"//"+rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("content");
 				mes.add(temp);
 				if(i>20){
 					break;
@@ -221,7 +221,7 @@ public class DatabaseController {
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
-				String temp=rs.getString("roomID")+"//"+rs.getString("stime")+"//"+rs.getString("etime")+"//"+rs.getString("activity")+"//"+rs.getString("location")+"//"+rs.getInt("pnum");
+				String temp=rs.getString("roomID")+"//"+rs.getString("starttime")+"//"+rs.getString("endtime")+"//"+rs.getString("activity")+"//"+rs.getString("location")+"//"+rs.getInt("pnum");
 				rooms.add(temp);
 			}
 		} catch (SQLException e) {

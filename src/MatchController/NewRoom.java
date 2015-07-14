@@ -1,10 +1,9 @@
-package MatchController.requestBL;
+package MatchController;
 
 import java.util.ArrayList;
 
 import Dao.Room;
 import Dao.User;
-import MatchController.requestHelper.NewUser;
 
 public class NewRoom {
 	

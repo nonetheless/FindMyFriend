@@ -1,4 +1,4 @@
-package MatchController.requestHelper;
+package MatchController;
 
 import Dao.User;
 

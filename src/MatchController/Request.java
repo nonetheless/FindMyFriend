@@ -1,9 +1,6 @@
-package MatchController.requestBL;
+package MatchController;
 
 import Dao.User;
-import MatchController.requestHelper.ActivityPlace;
-import MatchController.requestHelper.ActivityTime;
-import MatchController.requestHelper.NewUser;
 
 
 public class Request {

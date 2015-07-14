@@ -1,4 +1,4 @@
-package MatchController.requestBL;
+package MatchController;
 
 import java.util.ArrayList;
 

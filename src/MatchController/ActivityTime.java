@@ -1,6 +1,6 @@
-package MatchController.requestHelper;
+package MatchController;
 
-import MatchController.requestHelper.ActivityTime;
+import MatchController.ActivityTime;
 
 public class ActivityTime {
 

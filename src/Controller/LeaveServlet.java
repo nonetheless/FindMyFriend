@@ -19,13 +19,6 @@ import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class LeaveServlet extends HttpServlet {
-	static{
-		if(!RegisterServlet.isrun){
-			DataService service = new DataServiceimpl();
-			service.runDataBase();
-			RegisterServlet.isrun = true;
-		}
-	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");

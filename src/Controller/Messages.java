@@ -11,18 +11,18 @@ import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class Messages extends HttpServlet {
+	public static boolean isrun = false;
 	static{
-		if(!RegisterServlet.isrun){
+		if(!Messages.isrun){
 			DataService service = new DataServiceimpl();
 			service.runDataBase();
-			RegisterServlet.isrun = true;
+			Messages.isrun = true;
 		}
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = (String) request.getParameter("action");
 		if("Login".equals(action)){
-			System.out.println("get");
 			request.getRequestDispatcher("/servlet/LoginServlet").forward(request, response);
 		} else if("Send".equals(action)){
 			request.getRequestDispatcher("/servlet/SendServlet").forward(request, response);

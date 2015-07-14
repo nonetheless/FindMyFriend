@@ -18,14 +18,6 @@ import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class SendServlet extends HttpServlet {
-	static{
-		if(!RegisterServlet.isrun){
-			DataService service = new DataServiceimpl();
-			service.runDataBase();
-			RegisterServlet.isrun = true;
-		}
-	}
-	public static boolean isnew = false;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		DataService service = new DataServiceimpl();
@@ -38,7 +30,7 @@ public class SendServlet extends HttpServlet {
         	roomID = "00001";
         Record record = new Record(roomID,sendTime,username,"all",content);
         service.writeChattingPO(record);
-        isnew = true;
+        GetServlet.isnew = true;
         request.getRequestDispatcher("/ChatRoom1/servlet/GetServlet").forward(request, response);
 	}
 

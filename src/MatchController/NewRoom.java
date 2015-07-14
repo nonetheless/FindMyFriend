@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Dao.Room;
 import Dao.User;
+import DataBase.DataService;
+import DataBase.DataServiceimpl;
 
 public class NewRoom {
 	
@@ -47,12 +49,16 @@ public class NewRoom {
 	}
 	public void addToList(NewUser newUser){
 		this.userList.add(newUser);
+		DataService data = new DataServiceimpl();
+		data.come(newUser.getId(), this.id);
 	}
 	public void subInList(NewUser newUser){
 		for(int i = 0;i<this.userList.size();i++){
 			NewUser temp = userList.get(i);
 			if(temp.equals(newUser)){
 				this.userList.remove(i);
+				DataService data = new DataServiceimpl();
+				data.leave(newUser.getId());
 				break;
 			}
 		}

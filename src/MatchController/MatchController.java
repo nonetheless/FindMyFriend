@@ -37,6 +37,7 @@ public class MatchController {
 		this.roomList.add(room);
 		Room temp = room.toRoom();
 		data.writeRoomPO(temp);
+		data.come(aRequest.getCreater().getId(), room.getId());
 	}
 	public void deleteRoom(){
 		 Date date=new Date();
@@ -80,18 +81,27 @@ public class MatchController {
 		}
 		return total;
 	}
-	public void match(Request request){
+	public void match(Request request){         //在低精度低情况下匹配所有符合要求的房间，然后由用户选择
 		boolean isExist = false;
+		ArrayList<NewRoom> result = new ArrayList<NewRoom>();
 		for(int i = 0;i<this.roomList.size();i++){
 			Request temp = roomList.get(i).getCreateRequest();
 			if(temp.equals(request)){
 				isExist = true;
-				this.roomList.get(i).addToList(request.getCreater());
-				break;
+				result.add(roomList.get(i));
+			}
+		}
+		if(isExist){
+			//ui show all room
+			for(int i = 0;i<result.size();i++){
+				System.out.println(result.get(i).getId());
 			}
 		}
 		if(!isExist){
-			this.createRoom(request);
+			this.createRoom(request);			
 		}
+	}
+	public void letIn(String userId,String roomId){
+		data.come(userId, roomId);
 	}
 }

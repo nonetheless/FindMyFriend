@@ -54,29 +54,33 @@ public class ActivityTime {
 		int total22 = this.TimeIntoMin(another.getEndTime());
 		int total2 = total22-total21;
 		
-		if(total11>=total22||total12<=total21){
-			return false;
-		}else if(total11>=total21&&total12>=total22){
-			if(((((double)(total22-total11))/total1)>=this.okPercent)&&((((double)(total22-total11))/total2)>=this.okPercent)){
-				return true;
-			}else{
+		if(this.getDate().equals(another.getDate())){
+			if(total11>=total22||total12<=total21){
 				return false;
-			}
-		}else if(total11<=21&&total12>=total22){
-			if(((((double)(total22-total21))/total1)>=this.okPercent)&&((((double)(total22-total21))/total2)>=this.okPercent)){
-				return true;
-			}else{
-				return false;
-			}
-		}else if(total11>=total21&&total12<=total22){
-			if(((((double)(total12-total11))/total1)>=this.okPercent)&&((((double)(total12-total11))/total2)>=this.okPercent)){
-				return true;
-			}else{
-				return false;
-			}
-		}else if(total11<=total21&&total12<-total22){
-			if(((((double)(total12-total21))/total1)>=this.okPercent)&&((((double)(total12-total21))/total2)>=this.okPercent)){
-				return true;
+			}else if(total11>=total21&&total12>=total22){
+				if(((((double)(total22-total11))/total1)>=this.okPercent)&&((((double)(total22-total11))/total2)>=this.okPercent)){
+					return true;
+				}else{
+					return false;
+				}
+			}else if(total11<=21&&total12>=total22){
+				if(((((double)(total22-total21))/total1)>=this.okPercent)&&((((double)(total22-total21))/total2)>=this.okPercent)){
+					return true;
+				}else{
+					return false;
+				}
+			}else if(total11>=total21&&total12<=total22){
+				if(((((double)(total12-total11))/total1)>=this.okPercent)&&((((double)(total12-total11))/total2)>=this.okPercent)){
+					return true;
+				}else{
+					return false;
+				}
+			}else if(total11<=total21&&total12<-total22){
+				if(((((double)(total12-total21))/total1)>=this.okPercent)&&((((double)(total12-total21))/total2)>=this.okPercent)){
+					return true;
+				}else{
+					return false;
+				}
 			}else{
 				return false;
 			}

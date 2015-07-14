@@ -2,16 +2,22 @@ package MatchController;
 
 import java.util.ArrayList;
 
+import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 
 public class TestMatch {
 	public static void main(String args[]){
-		Request request = new Request("movie","8:00","14:00","2015-7-14","playground");
+		DataService data = new DataServiceimpl();
+		data.runDataBase();
+		User lzt = data.getUserByID("kkk");//new User("374698133@qq.com","shuaibiliu","123");
+		//data.writeUserPO(lzt);
+		Request request = new Request("diablo3","8:00","23:00","2015-7-15",lzt,"sushe");
 		MatchController matchC = new MatchController(new TestMatch().getRooms());
 		//matchC.match(request);
-		matchC.deleteRoom();
+		//matchC.deleteRoom();
+		matchC.letIn(lzt.getUserID(), "5");
 	}
 	public ArrayList<NewRoom> getRooms(){
 		DataService data = new DataServiceimpl();

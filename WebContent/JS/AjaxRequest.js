@@ -48,5 +48,5 @@ net.AjaxRequest.onReadyState=function(){
 }
 //重构默认的错误处理函数
 net.AjaxRequest.prototype.defaultError=function(){
-  alert("错误数据\n\n回调状态:"+this.req.readyState+"\n状态: "+this.req.status);
+  //alert("错误数据\n\n回调状态:"+this.req.readyState+"\n状态: "+this.req.status);
 }

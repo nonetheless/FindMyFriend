@@ -101,7 +101,7 @@ function check(){
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/ChatRoom1/login_in.jsp" class="active">登陆</a>
+                    <a href="/ChatRoom1/login.jsp" class="active">登陆</a>
 
                 </li>
                 <li>
@@ -115,7 +115,7 @@ function check(){
 </nav>
 <div class="container">
 
-    <form name="form1" method = "post" action="/ChatRoom1/servlet/RegisterServlet" onSubmit="return check()" class="form-signin">
+    <form name="form1" method = "post" action="Messages?action=Register" onSubmit="return check()" class="form-signin">
         <h2 class="form-signin-heading">Please sign up</h2>
                 <label for="inputuserID" class="sr-only">UserID</label>
         <input type="text" name="userID" id="userID" class="login form-control" placeholder="用户ID" required autofocus>

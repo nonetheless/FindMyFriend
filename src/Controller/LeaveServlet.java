@@ -14,20 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Record;
+import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class LeaveServlet extends HttpServlet {
-
+	static{
+		if(!RegisterServlet.isrun){
+			DataService service = new DataServiceimpl();
+			service.runDataBase();
+			RegisterServlet.isrun = true;
+		}
+	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		DataService service = new DataServiceimpl();
 		HttpSession session = request.getSession();
+		String userID = (String) session.getAttribute("userID");
 		String username = (String) session.getAttribute("username");
-		String roomID = request.getParameter("roomID");
+		String roomID = (String) session.getAttribute("roomID");
+		User user = service.getUserByID(userID);
+		user.setState(0);
 		Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"离开房间");
 		service.writeChattingPO(record);
+		service.writeUserPO(user);
 		session.invalidate();
 		request.getRequestDispatcher("/login_in.jsp").forward(request,
 				response);

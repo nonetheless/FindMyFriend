@@ -7,20 +7,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.Record;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class GetServlet extends HttpServlet {
+	static {
+		if (!RegisterServlet.isrun) {
+			DataService service = new DataServiceimpl();
+			service.runDataBase();
+			RegisterServlet.isrun = true;
+		}
+	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		DataService service = new DataServiceimpl();
-		String roomID = request.getParameter("roomID");
+		HttpSession session = request.getSession();
+		String roomID = (String) session.getAttribute("roomID");
+		if (roomID == null)
+			roomID = "00001";
 		ArrayList<String> allrecord = service.getTwentyMess(roomID);
 		ArrayList<Record> twentyrecord = new ArrayList<Record>();
-		for(String one:allrecord){
+		for (String one : allrecord) {
 			String[] att = one.split("//");
 			Record record = new Record();
 			record.setChatroom(att[0]);

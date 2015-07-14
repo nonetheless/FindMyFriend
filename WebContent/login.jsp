@@ -115,7 +115,7 @@ function check(){
 </nav>
 <div class="container">
 
-    <form name="form1" method = "post" action="/ChatRoom1/servlet/LoginServlet" onSubmit="return check()" class="form-signin">
+    <form name="form1" method = "post" action="Messages?action=Login" onSubmit="return check()" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
                 <label for="inputuserID" class="sr-only">UserID</label>
         <input type="text" name="userID" id="userID" class="login form-control" placeholder="用户ID" required autofocus>
@@ -126,7 +126,7 @@ function check(){
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-block" type="submit">Sign in</button>		
+        <button class="btn btn-lg btn-block" type="submit" >Sign in</button>		
     </form>
 
 </div> 

@@ -39,14 +39,20 @@ public class LoginServlet extends HttpServlet {
 			if (user.getState()==1) {
 				out.write("请先退出其他房间");
 			} else {
+				System.out.println("get");
 				user.setState(1);
 				String username = user.getUserName();
 				HttpSession session = request.getSession();
+				session.setAttribute("userID", userID);
 				session.setAttribute("username", username); // 保存当前登录的用户名
 				session.setAttribute("loginTime", new Date().toLocaleString()); // 保存登录时间
 				String roomID = request.getParameter("roomID");
+				if(roomID==null)
+					roomID = "00001";
+				session.setAttribute("roomID", roomID);
 				Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"进入房间");
 				service.writeChattingPO(record);
+				SendServlet.isnew = true;
 				request.getRequestDispatcher("/main.jsp").forward(request,
 						response);
 			}

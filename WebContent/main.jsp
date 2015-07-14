@@ -17,10 +17,10 @@ function showOnline(){
 	var loader=new net.AjaxRequest("online.jsp?nocache="+new Date().getTime(),deal_online,onerror,"GET");
 }
 function showContent(){
-	var loader1=new net.AjaxRequest("Messages?action=getMessages&nocache="+new Date().getTime(),deal_content,onerror,"GET");
+	var loader1=new net.AjaxRequest("Messages?action=Get&nocache="+new Date().getTime(),deal_content,onerror,"GET");
 }
 function onerror(){
-	alert("很抱歉，服务器出现错误，当前窗口将关闭！");
+	//alert("很抱歉，服务器出现错误，当前窗口将关闭！");
 	window.opener=null;
 	window.close();
 }
@@ -58,7 +58,7 @@ window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按
 			alert("发送信息不可以为空！");form1.content1.focus();return false;
 		}
 		var param="from="+form1.from.value+"&content="+	form1.content1.value;
-        var loader=new net.AjaxRequest("Messages?action=sendMessage",deal_send,onerror,"POST",param);
+        var loader=new net.AjaxRequest("Messages?action=Send",deal_send,onerror,"POST",param);
         var el=document.getElementById("content1");
         el.value="";
 	}

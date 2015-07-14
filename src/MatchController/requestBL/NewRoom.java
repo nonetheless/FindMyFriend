@@ -65,7 +65,7 @@ public class NewRoom {
 		String activity = String.valueOf(this.createRequest.getActivity());
 		String location = this.createRequest.getPlace().getName();
 		
-		String name = date+"~"+start+";"+date+"~"+end+";"+activity+";"+location;
+		String name = date+" "+start+";"+date+" "+end+";"+activity+";"+location;
 		
 		return new Room(this.id,name);
 	}

@@ -145,7 +145,7 @@ public class DatabaseController {
 		}
 	}
 	public static void addNum(String ID){
-		String sql="update roomtable set pnum=pum+1 where roomID='"+ID+"';";
+		String sql="update roomtable set pnum=pnum+1 where roomID='"+ID+"';";
 		try {
 			statWrite2.execute(sql);
 		} catch (SQLException e) {

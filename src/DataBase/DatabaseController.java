@@ -221,7 +221,7 @@ public class DatabaseController {
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
-				String temp=rs.getString("roomID")+"//"+rs.getString("stime")+"//"+rs.getString("etime")+"//"+rs.getString("activity")+"//"+rs.getString("location")+"//"+rs.getInt("pnum");
+				String temp=rs.getString("roomID")+"//"+rs.getString("starttime")+"//"+rs.getString("endtime")+"//"+rs.getString("activity")+"//"+rs.getString("location")+"//"+rs.getInt("pnum");
 				rooms.add(temp);
 			}
 		} catch (SQLException e) {

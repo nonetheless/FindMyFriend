@@ -7,19 +7,8 @@ import Dao.Room;
 import Dao.User;
 
 public class DataServiceimpl implements DataService {
-	Concurrent ucon =new UserConcurrent();
-	Concurrent rcon=new RoomConcurrent();
-	Concurrent rucon=new RoomUserListConcurrent();
 	public void runDataBase() {
 		DatabaseController.setConnection();
-		//Concurrent ucon =new UserConcurrent();
-		//Concurrent rcon=new RoomConcurrent();
-		Thread t1=new Thread(ucon);
-		Thread t2=new Thread(rcon);
-		Thread t3=new Thread(rucon);
-		t1.start();
-		t2.start();
-		t3.start();
 	}
 
 	public boolean IsUserExist(String UserID,String password) {
@@ -30,18 +19,16 @@ public class DataServiceimpl implements DataService {
 	}
 
 	public void writeUserPO(User up) {
-		 ucon.writeOne(up);
-		
+		DatabaseController.writeUserPO(up.getUserID(), up.getUserName(),up.getPassword(),up.getState());
 	}
 	public void updateUserPO(String ID,String name){
 		DatabaseController.changeUserName(ID, name);
 	}
 
-	@Override
-	public void updateNum(String ID) {
-		DatabaseController.updateNum(ID);
+	//public void addNum(String ID) {
+		//DatabaseController.addNum(ID);
 		
-	}
+	//}
 
 	@Override
 	public void writeChattingPO(Record cp) {
@@ -51,8 +38,7 @@ public class DataServiceimpl implements DataService {
 
 	@Override
 	public void writeRoomPO(Room rp) {
-		rcon.writeOne(rp);
-		
+		DatabaseController.writeRoomPO(rp.getRoomID(),rp.getRoomName(),rp.getStartTime(),rp.getEndTime(),rp.getActivity(),rp.getLocation(),rp.getPnum());
 	}
 
 	@Override
@@ -84,17 +70,16 @@ public class DataServiceimpl implements DataService {
 		DatabaseController.ReturnState(ID);
 	}
 	public void leave(String userID){
-		RoomUserListConcurrent rc=new RoomUserListConcurrent();
-		rc.leave(userID);
+		DatabaseController.leave(userID);
 	}
 	public void come(String userID,String roomID){
-		RoomUserListConcurrent rc=new RoomUserListConcurrent();
-		rc.come(userID, roomID);
-	}
-	public void end(String roomID){
-		DatabaseController.end(roomID);
+		DatabaseController.come(userID, roomID);
 	}
 	public ArrayList<String> search(String roomID){
 		return DatabaseController.search(roomID);
 	}
+
+	//public void subNum(String ID) {
+		//DatabaseController.subNum(ID);
+	//}
 }

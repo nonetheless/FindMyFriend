@@ -23,6 +23,8 @@ public class RegisterServlet extends HttpServlet {
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		String userID = request.getParameter("userID");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -31,9 +33,9 @@ public class RegisterServlet extends HttpServlet {
 		if(!service.checkUser(userID)){
 			User user = new User(userID, username, password);
 			service.writeUserPO(user);
-			out.write("alert('注册成功！')");
+			out.write("注册成功！");
 		}else{
-			out.write("alert('用户名已存在')");
+			out.write("用户名已存在");
 		}
 	}
 

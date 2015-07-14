@@ -144,12 +144,41 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 	}
-	public static void updateNum(String ID){
+	public static void addNum(String ID){
 		String sql="update roomtable set pnum=pum+1 where roomID='"+ID+"';";
 		try {
 			statWrite2.execute(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	public static void subNum(String ID){
+		String sql="select pnum from roomtable where roomID='"+ID+"';";
+		int pnum=0;
+		try {
+			ResultSet rs=statReader.executeQuery(sql);
+			if(rs.next()){
+				pnum=rs.getInt("pnum");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		pnum--;
+		if(pnum>0){
+			String sql2="update roomtable set pnum='"+pnum+"' where roomID='"+ID+"';";
+			try {
+				statWrite2.execute(sql2);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else{
+			String sql3="delete from roomtable where roomID='"+ID+"';";
+			try {
+				statWrite2.execute(sql3);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	public static boolean checkRoomID(String ID){
@@ -168,12 +197,17 @@ public class DatabaseController {
 	}
 	public static ArrayList<String> getTwentyMess(String ID){
 		ArrayList<String> mes=new ArrayList<String>();
-		String sql="select top 20 * from chat where roomID='"+ID+"' order by time";
+		String sql="select * from chat where roomID='"+ID+"' order by time desc";
+		int i=0;
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
+				i++;
 				String temp=rs.getString("speaker")+"//"+rs.getString("time")+"//"+rs.getString("content");
 				mes.add(temp);
+				if(i>20){
+					break;
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -196,36 +230,32 @@ public class DatabaseController {
 		}
 		return rooms;
 	}
-	public static void leave(String userID,String roomID){
-		String sql="delete  "+roomID+" where userID='"+userID+"';";
+	public static void leave(String userID){
+		String sql="select roomID from roomusertable where userID='"+userID+"';";
+		String roomID="";
 		try {
-			statWrite4.execute(sql);
+			ResultSet rs=statReader.executeQuery(sql);
+			if(rs.next()){
+				roomID=rs.getString("roomID");
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			statWrite2.execute("delete from roomusertable where userID='"+userID+"';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		subNum(roomID);
 	}
 	public static void come(String userID,String roomID){
-		String sql1="create table if not exists"+roomID +"userID varchar(20),roomID varchar(20),primary key(userID));";
-		String sql2="insert into "+roomID+" values('"+userID+"','"+roomID+"');";
+		String sql="insert into roomusertable values('"+userID+"','"+roomID+"');";
 		try {
-			statWrite4.execute(sql1);
-			statWrite4.execute(sql2);
+			statWrite2.execute(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	public static void end(String roomID){
-
-		String sql="drop table  "+roomID+" ;";
-		try {
-			statWrite4.execute(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
+		addNum(roomID);
 	}
 	public static ArrayList<String> search(String roomID){
 		ArrayList<String> result=new ArrayList<String>();
@@ -243,8 +273,10 @@ public class DatabaseController {
 	}
 	public static void main(String[]args){
 		setConnection();
-		writeChattingPO("10000","1990-10-23","333","dafeiji","509");
-		System.out.print("Y");
+		//getTwentyMess("10000");
+		System.out.print(getTwentyMess("10000"));
+		//writeChattingPO("10000","1990-10-23","333","dafeiji","509");
+		//System.out.print("Y");
 	}
 	
 }

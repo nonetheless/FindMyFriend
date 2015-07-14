@@ -12,7 +12,8 @@ public interface DataService {
 	public boolean checkUser(String ID);
 	public void writeUserPO(User up);
 	public void updateUserPO(String ID,String name);
-	public void updateNum(String ID);
+	//public void addNum(String ID);
+	//public void subNum(String ID);
 	public void writeChattingPO(Record cp);
 	public void writeRoomPO(Room rp);
 	public boolean isRoomExist(String roomID);
@@ -23,6 +24,5 @@ public interface DataService {
 	public void setStateOut(String ID);
 	public void leave(String userID );
 	public void come(String userID,String roomID);
-	public void end(String roomID);
 	public ArrayList<String> search(String roomID);
 }

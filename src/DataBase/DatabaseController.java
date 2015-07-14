@@ -203,7 +203,7 @@ public class DatabaseController {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
 				i++;
-				String temp=rs.getString("speaker")+"//"+rs.getString("time")+"//"+rs.getString("content");
+				String temp=rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("time")+"//"+rs.getString("content");
 				mes.add(temp);
 				if(i>20){
 					break;

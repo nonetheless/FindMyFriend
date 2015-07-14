@@ -1,18 +1,22 @@
-package MatchController.requestBL;
+package MatchController;
 
 import java.util.ArrayList;
 
+import Dao.Room;
+import DataBase.DataService;
+import DataBase.DataServiceimpl;
+
 public class MatchController {
 	
-	private ArrayList<Room> roomList;
+	private ArrayList<NewRoom> roomList;
 	
-	public MatchController(){
-		roomList = new ArrayList<Room>();
+	public MatchController(ArrayList<NewRoom> rooms){
+		roomList = rooms;
 	}
-	public ArrayList<Room> getRoomList() {
+	public ArrayList<NewRoom> getRoomList() {
 		return roomList;
 	}
-	public void setRoomList(ArrayList<Room> roomList) {
+	public void setRoomList(ArrayList<NewRoom> roomList) {
 		this.roomList = roomList;
 	}
 	private String createId(){
@@ -24,8 +28,11 @@ public class MatchController {
 	}
 	private void createRoom(Request aRequest){
 		String id = this.createId();
-		Room room = new Room(aRequest,id);
+		NewRoom room = new NewRoom(aRequest,id);
 		this.roomList.add(room);
+		Room temp = room.toRoom();
+		DataService data = new DataServiceimpl();
+		data.writeRoomPO(temp);
 	}
 	public void match(Request request){
 		boolean isExist = false;

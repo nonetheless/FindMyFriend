@@ -1,15 +1,20 @@
-package MatchController.requestHelper;
+package MatchController;
 
-import MatchController.requestHelper.ActivityTime;
+import MatchController.ActivityTime;
 
 public class ActivityTime {
 
-	public double okPercent = 0.8; //双方共同时间占各自比例达到就OK
+	public double okPercent = 0.5; //双方共同时间占各自比例达到就OK
 	
 	private String date;  //2015-7-7
 	private String startTime; //9:40
 	private String endTime;
 	
+	public ActivityTime(String start,String end,String date){
+		this.date = date;
+		this.endTime = end;
+		this.startTime = start;
+	}
 	public String getDate() {
 		return date;
 	}
@@ -32,7 +37,7 @@ public class ActivityTime {
 		
 		String[] temp = time.split(":");
 		int hour = Integer.parseInt(temp[0]);
-		int min = Integer.parseInt(temp[1]);
+		int min = 0;//Integer.parseInt(temp[1]);
 		int total = -1;
 		
 		if(hour>=0&&hour<=24&&min>=0&&min<60){

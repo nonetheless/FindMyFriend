@@ -22,7 +22,6 @@ public class ShowRoomServlet extends HttpServlet {
 		ArrayList<String> all = service.getRoomName();
 		ArrayList<Room> list = new ArrayList<Room>();
 		for(String one:all){
-			System.out.println(one);
 			String roomID = one.split("//")[0];
 			String roomName = one.split("//")[1];
 			String number = one.split("//")[2];

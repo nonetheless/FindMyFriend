@@ -52,7 +52,7 @@ public class CreateRequestServlet extends HttpServlet {
 		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 		DTservice.writeChattingPO(record);
 		GetServlet.isnew=true;
-		request.getRequestDispatcher("/main.jsp").forward(request, response);
+		request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -259,7 +259,7 @@ public class DatabaseController {
 	}
 	public static ArrayList<String> searchRoomUser(String roomID){
 		ArrayList<String> result=new ArrayList<String>();
-		String sql="select * roomusertable,usertable where  roomID='"+roomID+"' and roomusertable.userID=usertable.userID;";
+		String sql="select * from roomusertable,usertable where  roomID='"+roomID+"' and roomusertable.userID=usertable.userID;";
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){

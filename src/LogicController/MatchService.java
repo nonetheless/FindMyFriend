@@ -1,4 +1,4 @@
-package MatchController;
+package LogicController;
 
 import java.util.ArrayList;
 

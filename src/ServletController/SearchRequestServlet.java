@@ -1,4 +1,4 @@
-package Controller;
+package ServletController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.NewRoom;
 import Dao.Request;
-import MatchController.MatchService;
-import MatchController.MatchServiceImp;
+import LogicController.MatchService;
+import LogicController.MatchServiceImp;
 
 public class SearchRequestServlet extends HttpServlet {
 

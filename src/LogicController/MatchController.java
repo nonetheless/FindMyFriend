@@ -1,4 +1,4 @@
-package MatchController;
+package LogicController;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

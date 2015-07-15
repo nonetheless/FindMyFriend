@@ -1,4 +1,4 @@
-package Controller;
+package ServletController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import Dao.Record;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
-import MatchController.MatchService;
-import MatchController.MatchServiceImp;
+import LogicController.MatchService;
+import LogicController.MatchServiceImp;
 
 public class LetInServlet extends HttpServlet {
 

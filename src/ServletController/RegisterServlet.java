@@ -1,4 +1,4 @@
-package Controller;
+package ServletController;
 
 import java.io.IOException;
 import java.io.PrintWriter;

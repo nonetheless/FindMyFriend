@@ -292,7 +292,7 @@ public class DatabaseController {
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
-				String temp=rs.getString("roomName")+"//"+rs.getInt("pnum");
+				String temp=rs.getString("roomID")+"//"+rs.getString("roomName")+"//"+rs.getInt("pnum");
 				allRoom.add(temp);
 			}
 		} catch (SQLException e) {

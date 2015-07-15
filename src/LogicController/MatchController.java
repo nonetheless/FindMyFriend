@@ -27,21 +27,24 @@ public class MatchController {
 		this.roomList = roomList;
 	}
 	
-	public String createId(){
+	private String createId(){
 		if(this.roomList.size() == 0){
 			return "0";
 		}else{
 			return Integer.valueOf(this.roomList.get(roomList.size()-1).getId())+1+"";
 		}
 	}
-	private void createRoom(Request aRequest){
+	
+	public String createRoom(Request aRequest){
 		String id = this.createId();
 		NewRoom room = new NewRoom(aRequest,id);
 		this.roomList.add(room);
 		Room temp = room.toRoom();
 		data.writeRoomPO(temp);
 		data.come(aRequest.getCreater().getId(), room.getId());
+		return room.getId();
 	}
+	
 	public void deleteRoom(){
 		 Date date=new Date();
 		 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

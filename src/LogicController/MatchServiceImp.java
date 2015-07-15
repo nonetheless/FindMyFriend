@@ -44,4 +44,9 @@ public class MatchServiceImp implements MatchService{
 		matchC.letIn(userId, roomId);
 	}
 
+	@Override
+	public String Createroom(Request request) {
+		return matchC.createRoom(request);
+	}
+
 }

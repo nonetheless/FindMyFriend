@@ -31,6 +31,11 @@
     <servlet-name>ControlServlet</servlet-name>
     <servlet-class>Controller.ControlServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>MatchController.Search</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>Messages</servlet-name>
@@ -55,6 +60,10 @@
   <servlet-mapping>
     <servlet-name>LeaveServlet</servlet-name>
     <url-pattern>/servlet/LeaveServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/servlet/Search</url-pattern>
   </servlet-mapping>
   
   <filter>

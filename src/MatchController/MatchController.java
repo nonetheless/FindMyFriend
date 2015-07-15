@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Dao.NewRoom;
+import Dao.Request;
 import Dao.Room;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
@@ -81,26 +83,17 @@ public class MatchController {
 		}
 		return total;
 	}
-	public void match(Request request){         //在低精度低情况下匹配所有符合要求的房间，然后由用户选择
-		boolean isExist = false;
+	public ArrayList<NewRoom> match(Request request){         		
 		ArrayList<NewRoom> result = new ArrayList<NewRoom>();
 		for(int i = 0;i<this.roomList.size();i++){
 			Request temp = roomList.get(i).getCreateRequest();
 			if(temp.equals(request)){
-				isExist = true;
 				result.add(roomList.get(i));
 			}
 		}
-		if(isExist){
-			//ui show all room
-			for(int i = 0;i<result.size();i++){
-				System.out.println(result.get(i).getId());
-			}
-		}
-		if(!isExist){
-			this.createRoom(request);			
-		}
+		return result;
 	}
+	
 	public void letIn(String userId,String roomId){
 		data.come(userId, roomId);
 	}

@@ -2,6 +2,8 @@ package MatchController;
 
 import java.util.ArrayList;
 
+import Dao.NewRoom;
+import Dao.Request;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
@@ -28,8 +30,8 @@ public class MatchServiceImp implements MatchService{
 		return rooms;
 	}
 	@Override
-	public void match(Request request) {
-		matchC.match(request);
+	public ArrayList<NewRoom> match(Request request) {
+		return matchC.match(request);
 	}
 
 	@Override

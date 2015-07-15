@@ -41,13 +41,14 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("username", username); // 保存当前登录的用户名
 				session.setAttribute("loginTime", new Date().toLocaleString()); // 保存登录时间
 				String roomID = request.getParameter("roomID");
-				if(roomID==null)
+				/*if(roomID==null)
 					roomID = "00001";
 				session.setAttribute("roomID", roomID);
 				Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!！");
 				service.writeChattingPO(record);
-				GetServlet.isnew=true;
-				request.getRequestDispatcher("/main.jsp").forward(request,response);
+				GetServlet.isnew=true;*/
+				//request.getRequestDispatcher("/servlet/LetInServlet").forward(request, response);
+				request.getRequestDispatcher("/servlet/ShowRoomServlet").forward(request, response);
 			}
 		}
 	}

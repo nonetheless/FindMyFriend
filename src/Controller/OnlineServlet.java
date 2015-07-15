@@ -26,10 +26,11 @@ public class OnlineServlet extends HttpServlet {
 		for(String user:all){
 			String userID = user.split("//")[0];
 			String username = user.split("//")[1];
+			System.out.println(username);
 			map.put(userID, username);
 		}
 		request.setAttribute("allUser", map);
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("/main.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

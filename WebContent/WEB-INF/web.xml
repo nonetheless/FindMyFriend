@@ -32,11 +32,36 @@
     <servlet-class>Controller.ControlServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Search</servlet-name>
-    <servlet-class>MatchController.Search</servlet-class>
+    <servlet-name>LetInServlet</servlet-name>
+    <servlet-class>Controller.LetInServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ShowRoomServlet</servlet-name>
+    <servlet-class>Controller.ShowRoomServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchRequestServlet</servlet-name>
+    <servlet-class>Controller.SearchRequestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OnlineServlet</servlet-name>
+    <servlet-class>Controller.OnlineServlet</servlet-class>
+  </servlet>
+  
+  
 
-
+  <servlet-mapping>
+    <servlet-name>OnlineServlet</servlet-name>
+    <url-pattern>/servlet/OnlineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchRequestServlet</servlet-name>
+    <url-pattern>/servlet/SearchRequestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowRoomServlet</servlet-name>
+    <url-pattern>/servlet/ShowRoomServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Messages</servlet-name>
     <url-pattern>/Messages</url-pattern>
@@ -62,8 +87,8 @@
     <url-pattern>/servlet/LeaveServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>Search</servlet-name>
-    <url-pattern>/servlet/Search</url-pattern>
+    <servlet-name>LetInServlet</servlet-name>
+    <url-pattern>/servlet/LetInServlet</url-pattern>
   </servlet-mapping>
   
   <filter>

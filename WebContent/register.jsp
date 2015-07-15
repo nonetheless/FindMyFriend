@@ -131,6 +131,8 @@ function check(){
         <button class="btn btn-lg btn-block" type="submit">Sign in</button>		
     </form>
 
-</div> 
+</div>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
 </body>
 </html>

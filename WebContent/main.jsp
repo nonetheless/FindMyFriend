@@ -2,6 +2,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <title>聊天室</title>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">    
     <link rel="stylesheet" type="text/css" href="bootstrap/css/style.css">    
@@ -10,7 +14,7 @@
 <script language="javascript">
 window.setInterval("showContent();",1000);
 window.setInterval("showOnline();",10000);
-var sysBBS="<li>欢迎光临心之语聊天室，请遵守聊天室规则，不要使用不文明用语。</li>";
+var sysBBS="";
 //此处需要加?nocache="+new Date().getTime()，否则将出现在线人员列表不更新的情况
 function showOnline(){
 	var loader=new net.AjaxRequest("online.jsp?nocache="+new Date().getTime(),deal_online,onerror,"GET");
@@ -56,7 +60,7 @@ window.onbeforeunload=function(){    		//当用户单击浏览器中的关闭按
 		if(form1.content1.value==""){
 			alert("发送信息不可以为空！");form1.content1.focus();return false;
 		}
-		var param="from="+form1.from.value+"&content="+	form1.content1.value;
+		var param="from="+"${username}"+"&content="+	form1.content1.value;
         var loader=new net.AjaxRequest("Messages?action=Send",deal_send,onerror,"POST",param);
         var el=document.getElementById("content1");
         el.value="";
@@ -109,27 +113,14 @@ content.innerHTML=sysBBS+this.req.responseText;
     
 
 	<div data-role="content" class="container" role="main">
-	<ul id="content" class="content-reply-box mg10"  style="height:450px; overflow:hidden">用户聊天</ul>
-<table width="778" height="50" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#D6D3CE">
+	<ul id="content" class="content-reply-box mg8" overflow:hidden">用户聊天</ul>
 <form action="" name="form1" method="post">
-  <tr>
-    <td height="17" align="left"><input name="from" type="hidden" value="${username}">
-    <td width="549" align="left">
+    <div class="row">
     
-    <textarea name="content1"  id="content1" style="resize:none;width:500px" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></textarea>
-    </td>
-    <td>
-      <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button>
-      </td>
-    <td align="center">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="30" align="left">&nbsp;</td>
-    <td colspan="2" align="center" class="word_dark">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-  </tr>
+    <div class="col-xs-12 col-md-8"><textarea name="content1"  class="form-control" id="content1" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></textarea></div>
+     <div class="col-xs-8 col-md-4"> <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button></div>
+      </div>
 </form>
-</table>
 </div>
 
 <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>

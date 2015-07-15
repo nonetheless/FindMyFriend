@@ -94,7 +94,7 @@ content.innerHTML=sysBBS+this.req.responseText;
         <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
     </div>
 
-    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left">
+    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left" >
 	<p class="text-center lead" id="online"> &nbsp;用户列表</p>
     </div>
     
@@ -117,7 +117,7 @@ content.innerHTML=sysBBS+this.req.responseText;
 <form action="" name="form1" method="post">
     <div class="row">
     
-    <div class="col-xs-12 col-md-8"><textarea name="content1"  class="form-control" id="content1" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></textarea></div>
+    <div class="input-group"><input name="content1"  class="form-control" id="content1" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></input></div>
      <div class="col-xs-8 col-md-4"> <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button></div>
       </div>
 </form>

@@ -259,11 +259,11 @@ public class DatabaseController {
 	}
 	public static ArrayList<String> searchRoomUser(String roomID){
 		ArrayList<String> result=new ArrayList<String>();
-		String sql="select * roomusertable where  roomID='"+roomID+"';";
+		String sql="select * roomusertable,usertable where  roomID='"+roomID+"' and roomusertable.userID=usertable.userID;";
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
-				result.add(rs.getString("userID"));
+				result.add(rs.getString("usertable.userID")+"//"+rs.getString("usertable.userName"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

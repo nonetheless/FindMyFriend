@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 				out.write("请先退出其他房间");
 			} else {
 				user.setState(1);
+				//service.writeUserPO(user);
 				String username = user.getUserName();
 				HttpSession session = request.getSession();
 				session.setAttribute("userID", userID);
@@ -43,11 +44,10 @@ public class LoginServlet extends HttpServlet {
 				if(roomID==null)
 					roomID = "00001";
 				session.setAttribute("roomID", roomID);
-				Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"进入房间");
+				Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!！");
 				service.writeChattingPO(record);
 				GetServlet.isnew=true;
-				request.getRequestDispatcher("/main.jsp").forward(request,
-						response);
+				request.getRequestDispatcher("/main.jsp").forward(request,response);
 			}
 		}
 	}

@@ -5,38 +5,68 @@
   </session-config>
   <servlet>
     <servlet-name>Messages</servlet-name>
-    <servlet-class>Controller.Messages</servlet-class>
+    <servlet-class>ServletController.Messages</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>Controller.RegisterServlet</servlet-class>
+    <servlet-class>ServletController.RegisterServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>Controller.LoginServlet</servlet-class>
+    <servlet-class>ServletController.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>SendServlet</servlet-name>
-    <servlet-class>Controller.SendServlet</servlet-class>
+    <servlet-class>ServletController.SendServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetServlet</servlet-name>
-    <servlet-class>Controller.GetServlet</servlet-class>
+    <servlet-class>ServletController.GetServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LeaveServlet</servlet-name>
-    <servlet-class>Controller.LeaveServlet</servlet-class>
+    <servlet-class>ServletController.LeaveServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ControlServlet</servlet-name>
-    <servlet-class>Controller.ControlServlet</servlet-class>
+    <servlet-class>ServletController.ControlServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Search</servlet-name>
-    <servlet-class>MatchController.Search</servlet-class>
+    <servlet-name>LetInServlet</servlet-name>
+    <servlet-class>ServletController.LetInServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowRoomServlet</servlet-name>
+    <servlet-class>ServletController.ShowRoomServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchRequestServlet</servlet-name>
+    <servlet-class>ServletController.SearchRequestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OnlineServlet</servlet-name>
+    <servlet-class>ServletController.OnlineServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CreateRequestServlet</servlet-name>
+    <servlet-class>ServletController.CreateRequestServlet</servlet-class>
   </servlet>
 
+  
+  
 
+  <servlet-mapping>
+    <servlet-name>OnlineServlet</servlet-name>
+    <url-pattern>/servlet/OnlineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchRequestServlet</servlet-name>
+    <url-pattern>/servlet/SearchRequestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowRoomServlet</servlet-name>
+    <url-pattern>/servlet/ShowRoomServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Messages</servlet-name>
     <url-pattern>/Messages</url-pattern>
@@ -62,8 +92,12 @@
     <url-pattern>/servlet/LeaveServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>Search</servlet-name>
-    <url-pattern>/servlet/Search</url-pattern>
+    <servlet-name>LetInServlet</servlet-name>
+    <url-pattern>/servlet/LetInServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreateRequestServlet</servlet-name>
+    <url-pattern>/servlet/CreateRequestServlet</url-pattern>
   </servlet-mapping>
   
   <filter>

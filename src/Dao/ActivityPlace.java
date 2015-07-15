@@ -1,6 +1,6 @@
-package MatchController;
+package Dao;
 
-import MatchController.ActivityPlace;
+import Dao.ActivityPlace;
 
 public class ActivityPlace {
 

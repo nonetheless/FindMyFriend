@@ -1,4 +1,4 @@
-package MatchController;
+package Dao;
 
 public enum Activity{
 	soccer,basketball,

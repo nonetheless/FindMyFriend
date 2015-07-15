@@ -1,6 +1,6 @@
-package MatchController;
+package Dao;
 
-import MatchController.ActivityTime;
+import Dao.ActivityTime;
 
 public class ActivityTime {
 

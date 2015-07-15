@@ -1,8 +1,8 @@
-package Controller;
+package ServletController;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Random;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,24 +14,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Record;
+import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
-public class SendServlet extends HttpServlet {
+public class LeaveServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		DataService service = new DataServiceimpl();
 		HttpSession session = request.getSession();
-		String username = (String)session.getAttribute("username");
-		String content = request.getParameter("content"); //发言内容
-        String sendTime = new Date().toLocaleString(); //发言时间
-        String roomID = (String) session.getAttribute("roomID");
-        if(roomID==null)
-        	roomID = "00001";
-        Record record = new Record(roomID,sendTime,username,"all",content);
-        service.writeChattingPO(record);
-        GetServlet.isnew = true;
-        request.getRequestDispatcher("/ChatRoom1/servlet/GetServlet").forward(request, response);
+		String userID = (String) session.getAttribute("userID");
+		String username = (String) session.getAttribute("username");
+		String roomID = (String) session.getAttribute("roomID");
+		User user = service.getUserByID(userID);
+		user.setState(0);
+		Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"离开房间");
+		service.writeChattingPO(record);
+		service.writeUserPO(user);
+		session.invalidate();
+		request.getRequestDispatcher("/login_in.jsp").forward(request,
+				response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

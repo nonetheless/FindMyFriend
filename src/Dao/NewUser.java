@@ -1,6 +1,5 @@
-package MatchController;
+package Dao;
 
-import Dao.User;
 
 public class NewUser {
 	private String id;

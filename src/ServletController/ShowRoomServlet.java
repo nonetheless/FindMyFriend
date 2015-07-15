@@ -1,4 +1,4 @@
-package Controller;
+package ServletController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class ShowRoomServlet extends HttpServlet {
 			list.add(room);
 		}
 		request.setAttribute("allRoom", list);
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("/page.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

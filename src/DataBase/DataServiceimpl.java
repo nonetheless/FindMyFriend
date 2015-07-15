@@ -75,14 +75,19 @@ public class DataServiceimpl implements DataService {
 	public void come(String userID,String roomID){
 		DatabaseController.come(userID, roomID);
 	}
-	public ArrayList<String> search(String roomID){
-		return DatabaseController.search(roomID);
+	public ArrayList<String> searchRoomUser(String roomID){
+		return DatabaseController.searchRoomUser(roomID);
 	}
 
 	@Override
 	public void deleteRoom(String ID) {
 		DatabaseController.deleteRoom(ID);
 		
+	}
+
+	@Override
+	public ArrayList<String> getRoomName() {
+		return DatabaseController.getRoomName();
 	}
 
 	//public void subNum(String ID) {

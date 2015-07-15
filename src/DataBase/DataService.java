@@ -24,6 +24,7 @@ public interface DataService {
 	public void setStateOut(String ID);
 	public void leave(String userID );
 	public void come(String userID,String roomID);
-	public ArrayList<String> search(String roomID);
+	public ArrayList<String> searchRoomUser(String roomID);
 	public void deleteRoom(String ID);
+	public ArrayList<String> getRoomName();
 }

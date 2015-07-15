@@ -257,13 +257,13 @@ public class DatabaseController {
 		}
 		addNum(roomID);
 	}
-	public static ArrayList<String> search(String roomID){
+	public static ArrayList<String> searchRoomUser(String roomID){
 		ArrayList<String> result=new ArrayList<String>();
-		String sql="select *  where  roomID='"+roomID+"';";
+		String sql="select * roomusertable where  roomID='"+roomID+"';";
 		try {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
-				result.add(rs.getString("roomID"));
+				result.add(rs.getString("userID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -285,5 +285,20 @@ public class DatabaseController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public static ArrayList<String> getRoomName(){
+		ArrayList<String> allRoom=new ArrayList<String>();
+		String sql="select * from roomtable";
+		try {
+			ResultSet rs=statReader.executeQuery(sql);
+			while(rs.next()){
+				String temp=rs.getString("roomName")+"//"+rs.getInt("pnum");
+				allRoom.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return allRoom;
 	}
 }

@@ -26,11 +26,12 @@ public class MatchController {
 	public void setRoomList(ArrayList<NewRoom> roomList) {
 		this.roomList = roomList;
 	}
-	private String createId(){
+	
+	public String createId(){
 		if(this.roomList.size() == 0){
 			return "0";
 		}else{
-			return this.roomList.size()+1+"";
+			return Integer.valueOf(this.roomList.get(roomList.size()-1).getId())+1+"";
 		}
 	}
 	private void createRoom(Request aRequest){

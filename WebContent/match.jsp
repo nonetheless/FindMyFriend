@@ -52,8 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<br>
 	<br>
 	<br>
-    <form method="post" action="/ChatRoom1/servlet/SearchRequestServlet">
-	<h1 class="form-signin-heading">请选择活动内容</h1>
+    <form method="post" action="/ChatRoom1/servlet/SearchRequestServlet?kind=${param.kindName}">
+	<h1 class="form-signin-heading">${param.kindName}</h1>
     <table border="0">
 	<tr  style="height:80">
 	<td align="center"><label>活动日期：</label></td>

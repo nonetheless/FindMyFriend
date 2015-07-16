@@ -1,4 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -31,23 +33,14 @@
 					</br>
 	</div>
 
+<c:forEach var="record1" items="${allRoom}">
 
     <div class="starter-template jumbotron">
-        <h2>Bootstrap starter template</h2>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-		 <p><a class="btn btn-lg btn-primary btn-shadow" href="#" role="button">进群聊聊</a></p>
+        <h2>${record1.activity}</h2>
+        <p class="lead">小伙伴快来${record1.location}一起${record1.activity}<br> 活动时间：${record1.startTime}到${record1.endTime},一起来吧</p>
+		 <p><a class="btn btn-lg btn-primary btn-shadow" href="/ChatRoom1/servlet/OnlineServlet?roomID=${record1.roomID}" role="button">进群聊聊</a></p>
     </div>
-
-	<div class="starter-template jumbotron">
-        <h2>Bootstrap starter template</h2>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-		 <p><a class="btn btn-lg btn-primary btn-shadow" href="#" role="button">进群聊聊</a></p>
-    </div>
-	<div class="starter-template jumbotron">
-        <h2>Bootstrap starter template</h2>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-		 <p><a class="btn btn-lg btn-primary btn-shadow" href="#" role="button">进群聊聊</a></p>
-    </div>
+</c:forEach>
 	<nav class="pagination">
         <a class="btn btn-default" href="#">&larr; 上一页</a>
 		<span class="page-number">第 1 页/共 1 页</span>

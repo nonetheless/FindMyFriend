@@ -117,7 +117,7 @@ content.innerHTML=sysBBS+this.req.responseText;
 <form action="" name="form1" method="post">
     <div class="row">
     
-    <div class="input-group"><input name="content1"  class="form-control" id="content1" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></input></div>
+    <div class="col-xs-12 col-md-8"><input name="content1"  class="form-control" id="content1" onKeyDown="if(event.keyCode==13 && event.ctrlKey){send();}"></input></div>
      <div class="col-xs-8 col-md-4"> <button name="Submit2" type="button" class="btn btn-lg btn-block" onClick="send()">发送</button></div>
       </div>
 </form>

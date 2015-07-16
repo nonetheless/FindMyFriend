@@ -246,6 +246,11 @@ public class DatabaseController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		try {
+			statWrite2.execute("update usertable set state=0 where userID='"+userID+"';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		subNum(roomID);
 	}
 	public static void come(String userID,String roomID){
@@ -255,6 +260,12 @@ public class DatabaseController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		try {
+			statWrite2.execute("update usertable set state=1 where userID='"+userID+"';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		addNum(roomID);
 	}
 	public static ArrayList<String> searchRoomUser(String roomID){

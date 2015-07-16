@@ -31,20 +31,20 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			User user = service.getUserByID(userID);
 			if (user.getState()==1) {
-				out.write("ÇëÏÈÍË³öÆäËû·¿¼ä");
+				out.write("è¯·å…ˆé€€å‡ºå…¶ä»–æˆ¿é—´ï¼");
 			} else {
 				user.setState(1);
 				//service.writeUserPO(user);
 				String username = user.getUserName();
 				HttpSession session = request.getSession();
 				session.setAttribute("userID", userID);
-				session.setAttribute("username", username); // ±£´æµ±Ç°µÇÂ¼µÄÓÃ»§Ãû
-				session.setAttribute("loginTime", new Date().toLocaleString()); // ±£´æµÇÂ¼Ê±¼ä
+				session.setAttribute("username", username); // ï¿½ï¿½ï¿½æµ±Ç°ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+				session.setAttribute("loginTime", new Date().toLocaleString()); // ï¿½ï¿½ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½
 				String roomID = request.getParameter("roomID");
 				/*if(roomID==null)
 					roomID = "00001";
 				session.setAttribute("roomID", roomID);
-				Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!£¡");
+				Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!");
 				service.writeChattingPO(record);
 				GetServlet.isnew=true;*/
 				//request.getRequestDispatcher("/servlet/LetInServlet").forward(request, response);

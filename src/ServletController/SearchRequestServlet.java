@@ -26,10 +26,7 @@ public class SearchRequestServlet extends HttpServlet {
 		String endhour = request.getParameter("endhour");
 		String endmin = request.getParameter("endmin");
 		String end = endhour+":"+endmin;
-		String year = request.getParameter("year");
-		String month = request.getParameter("month");
-		String day = request.getParameter("day");
-		String date = year+"-"+month+"-"+day;
+		String date = request.getParameter("date");
 		String userID = (String)request.getSession().getAttribute("userID");
 		String location = request.getParameter("place");
 		Request activityrequest = new Request(activity, start, end, date, location);

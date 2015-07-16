@@ -204,6 +204,7 @@ public class DatabaseController {
 			while(rs.next()){
 				i++;
 				String temp=rs.getString("roomID")+"//"+rs.getString("time")+"//"+rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("content");
+				System.out.println(temp);
 				mes.add(temp);
 				if(i>20){
 					break;

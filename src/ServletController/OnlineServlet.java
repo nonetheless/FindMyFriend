@@ -32,7 +32,6 @@ public class OnlineServlet extends HttpServlet {
 		for(String one:all){
 			String ID = one.split("//")[0];
 			String username = one.split("//")[1];
-			System.out.println(username);
 			map.put(ID, username);
 		}
 		request.setAttribute("allUser", map);

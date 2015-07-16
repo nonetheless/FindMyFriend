@@ -29,11 +29,12 @@ public class LeaveServlet extends HttpServlet {
 		String roomID = (String) session.getAttribute("roomID");
 		User user = service.getUserByID(userID);
 		user.setState(0);
-		Record record = new Record(roomID, new Date().toLocaleString(), "系统消息", "all", username+"离开房间");
+		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!");
 		service.writeChattingPO(record);
 		service.writeUserPO(user);
+		service.leave(userID);
 		session.invalidate();
-		request.getRequestDispatcher("/login_in.jsp").forward(request,
+		request.getRequestDispatcher("/login.jsp").forward(request,
 				response);
 	}
 

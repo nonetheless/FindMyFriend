@@ -30,8 +30,7 @@ public class GetServlet extends HttpServlet {
 			DataService service = new DataServiceimpl();
 			HttpSession session = request.getSession();
 			String roomID = (String) session.getAttribute("roomID");
-			if (roomID == null)
-				roomID = "00001";
+			System.out.println("GetServlet:roomID"+roomID);
 			ArrayList<String> allrecord = service.getTwentyMess(roomID);
 			for (int i=allrecord.size()-1;i>=0;i--) {
 				String one = allrecord.get(i);

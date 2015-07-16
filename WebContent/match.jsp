@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<br>
 	<br>
 	<br>
-    <form method="post" action="/ChatRoom1/servlet/SearchRequestServlet?kind=${param.kindName}">
+    <form method="post" action="/ChatRoom1/servlet/GetRequestServlet?kind=${param.kindName}">
 	<h1 class="form-signin-heading">${param.kindName}</h1>
     <table border="0">
 	<tr  style="height:80">

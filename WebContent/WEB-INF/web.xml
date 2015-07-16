@@ -40,28 +40,21 @@
     <servlet-class>ServletController.ShowRoomServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>SearchRequestServlet</servlet-name>
-    <servlet-class>ServletController.SearchRequestServlet</servlet-class>
+    <servlet-name>GetRequestServlet</servlet-name>
+    <servlet-class>ServletController.GetRequestServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>OnlineServlet</servlet-name>
     <servlet-class>ServletController.OnlineServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>CreateRequestServlet</servlet-name>
-    <servlet-class>ServletController.CreateRequestServlet</servlet-class>
-  </servlet>
-
-  
-  
 
   <servlet-mapping>
     <servlet-name>OnlineServlet</servlet-name>
     <url-pattern>/servlet/OnlineServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>SearchRequestServlet</servlet-name>
-    <url-pattern>/servlet/SearchRequestServlet</url-pattern>
+    <servlet-name>GetRequestServlet</servlet-name>
+    <url-pattern>/servlet/GetRequestServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ShowRoomServlet</servlet-name>
@@ -94,10 +87,6 @@
   <servlet-mapping>
     <servlet-name>LetInServlet</servlet-name>
     <url-pattern>/servlet/LetInServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CreateRequestServlet</servlet-name>
-    <url-pattern>/servlet/CreateRequestServlet</url-pattern>
   </servlet-mapping>
   
   <filter>

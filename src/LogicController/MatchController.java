@@ -31,6 +31,7 @@ public class MatchController {
 		if(this.roomList.size() == 0){
 			return "0";
 		}else{
+			System.out.println("createId:roomID"+this.roomList.get(roomList.size()-1).getId());
 			return Integer.valueOf(this.roomList.get(roomList.size()-1).getId())+1+"";
 		}
 	}
@@ -42,6 +43,7 @@ public class MatchController {
 		Room temp = room.toRoom();
 		data.writeRoomPO(temp);
 		data.come(aRequest.getCreater().getId(), room.getId());
+		System.out.println("createRoom:roomID"+room.getId());
 		return room.getId();
 	}
 	

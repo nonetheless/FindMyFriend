@@ -30,7 +30,6 @@ public class RegisterServlet extends HttpServlet {
 		}else{
 			request.getRequestDispatcher("/registerfailed.html").forward(request, response);
 		}
-		System.out.println(service.getUserByID(userID).getUserName());
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

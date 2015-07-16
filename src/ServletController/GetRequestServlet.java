@@ -20,12 +20,13 @@ import DataBase.DataServiceimpl;
 import LogicController.MatchService;
 import LogicController.MatchServiceImp;
 
-public class CreateRequestServlet extends HttpServlet {
+public class GetRequestServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		String kind = request.getParameter("kind");
 		String activity = request.getParameter("activity");
 		String starthour = request.getParameter("starthour");
 		String startmin = request.getParameter("startmin");
@@ -33,31 +34,34 @@ public class CreateRequestServlet extends HttpServlet {
 		String endhour = request.getParameter("endhour");
 		String endmin = request.getParameter("endmin");
 		String end = endhour+":"+endmin;
-		String year = request.getParameter("year");
-		String month = request.getParameter("month");
-		String day = request.getParameter("day");
-		String date = year+"-"+month+"-"+day;
+		String date = request.getParameter("date");
+		String userID = (String)request.getSession().getAttribute("userID");
 		String location = request.getParameter("place");
-		
-		HttpSession session = request.getSession();
-		String userID = (String)session.getAttribute("userID");
 		Request activityrequest = new Request(activity, start, end, date, location);
+		MatchService MCservice = new MatchServiceImp();
 		DataService DTservice = new DataServiceimpl();
 		User user = DTservice.getUserByID(userID);
-		NewUser newUser = new NewUser(user);
-		activityrequest.setCreater(newUser);
-		MatchService MCservice = new MatchServiceImp();
-		String roomID = MCservice.Createroom(activityrequest);
-		session.setAttribute("roomID", roomID);
-		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
-		DTservice.writeChattingPO(record);
-		GetServlet.isnew=true;
-		request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
+		if("CreateRoom".equals(kind)){
+			User create = DTservice.getUserByID(userID);
+			activityrequest.setCreater( new NewUser(create));
+			String roomID = MCservice.Createroom(activityrequest);
+			request.setAttribute("roomID", roomID);
+			HttpSession session = request.getSession();
+			session.setAttribute("roomID", roomID);
+			Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
+			DTservice.writeChattingPO(record);
+			GetServlet.isnew=true;
+			request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
+		}else if("SearchRoom".equals(kind)){
+			ArrayList<NewRoom> list = MCservice.match(activityrequest);
+			request.setAttribute("wantroom", list);
+			request.getRequestDispatcher("/searchresult.jsp").forward(request, response);
+		}
+		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
-	}
-
+			this.doGet(request, response);
+		}
 }

@@ -23,7 +23,8 @@ public class OnlineServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
-		String roomID = request.getParameter("roomID");
+		String roomID = (String) request.getAttribute("roomID");
+		System.out.println("OnlineServlet:roomID"+roomID);
 		session.setAttribute("roomID", roomID);
 		DataService service = new DataServiceimpl();
 		User user = service.getUserByID(userID);

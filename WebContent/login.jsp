@@ -85,7 +85,7 @@ function check(){
 
     <form name="form1" method = "post" action="Messages?action=Login" onSubmit="return check()" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="inputuserID" class="sr-only">UserID</label>
+        <label for="inputuserID" class="sr-only">UserID</label>
         <input type="text" name="userID" id="userID" class="login form-control" placeholder="用户ID" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码" required>

@@ -2,6 +2,7 @@ package ServletController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.Record;
+import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
@@ -19,17 +22,23 @@ public class OnlineServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String roomID = (String) session.getAttribute("roomID");
+		String userID = (String) session.getAttribute("userID");
+		String roomID = request.getParameter("roomID");
+		session.setAttribute("roomID", roomID);
 		DataService service = new DataServiceimpl();
+		User user = service.getUserByID(userID);
 		ArrayList<String> all = service.searchRoomUser(roomID);
 		Map<String,String> map = new HashMap<String, String>();
-		for(String user:all){
-			String userID = user.split("//")[0];
-			String username = user.split("//")[1];
+		for(String one:all){
+			String ID = one.split("//")[0];
+			String username = one.split("//")[1];
 			System.out.println(username);
-			map.put(userID, username);
+			map.put(ID, username);
 		}
 		request.setAttribute("allUser", map);
+		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
+		service.writeChattingPO(record);
+		GetServlet.isnew=true;
 		request.getRequestDispatcher("/main.jsp").forward(request, response);
 	}
 

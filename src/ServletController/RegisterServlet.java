@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		if(!service.checkUser(userID)){
 			User user = new User(userID, username, password);
 			service.writeUserPO(user);
-			request.getRequestDispatcher("/main.jsp").forward(request, response);
+			request.getRequestDispatcher("/page.jsp").forward(request, response);
 		}else{
 			request.getRequestDispatcher("/registerfailed.html").forward(request, response);
 		}

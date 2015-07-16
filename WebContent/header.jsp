@@ -14,7 +14,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">热门活动</a></li>
+                <li><a href="/ChatRoom1/page.jsp">热门活动</a></li>
                 <li><a href="#about">个人中心</a></li>
                 <li><a href="#contact">关于我们</a></li>
             </ul>

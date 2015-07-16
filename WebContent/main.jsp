@@ -107,7 +107,7 @@ content.innerHTML=sysBBS+this.req.responseText;
           <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置</a></li>
           <li class="menu"><a href="#"><span class="glyphicon glyphicon-lock"> </span> &nbsp;修改密码</a></li>
           <li class="menu"><a href="#"><span class="glyphicon glyphicon-picture"> </span> &nbsp;上传头像</a></li>
-          <li class="menu"><a href="#"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出</a></li>
+          <li class="menu"><a href="/ChatRoom1/servlet/LeaveServlet"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出</a></li>
         </ul>
     </div>
     

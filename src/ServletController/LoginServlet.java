@@ -27,29 +27,26 @@ public class LoginServlet extends HttpServlet {
 		DataService service = new DataServiceimpl();
 		PrintWriter out = response.getWriter();
 		if (!service.IsUserExist(userID, password)) {
-			request.getRequestDispatcher("/loginfailed.html").forward(request, response);
+			request.getRequestDispatcher("/loginfailed.html").forward(request,
+					response);
 		} else {
 			User user = service.getUserByID(userID);
-			if (user.getState()==1) {
-				out.write("请先退出其他房间！");
-			} else {
-				user.setState(1);
-				//service.writeUserPO(user);
-				String username = user.getUserName();
-				HttpSession session = request.getSession();
-				session.setAttribute("userID", userID);
-				session.setAttribute("username", username); // ���浱ǰ��¼���û���
-				session.setAttribute("loginTime", new Date().toLocaleString()); // �����¼ʱ��
-				String roomID = request.getParameter("roomID");
-				/*if(roomID==null)
-					roomID = "00001";
-				session.setAttribute("roomID", roomID);
-				Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!");
-				service.writeChattingPO(record);
-				GetServlet.isnew=true;*/
-				//request.getRequestDispatcher("/servlet/LetInServlet").forward(request, response);
-				request.getRequestDispatcher("/servlet/ShowRoomServlet").forward(request, response);
-			}
+			String username = user.getUserName();
+			HttpSession session = request.getSession();
+			session.setAttribute("userID", userID);
+			session.setAttribute("username", username);
+			session.setAttribute("loginTime", new Date().toLocaleString());
+			/*
+			 * if(roomID==null) roomID = "00001"; session.setAttribute("roomID",
+			 * roomID); Record record = new Record(roomID, new
+			 * Date().toLocaleString(), "System message", "all",
+			 * username+"entered room!"); service.writeChattingPO(record);
+			 * GetServlet.isnew=true;
+			 */
+			// request.getRequestDispatcher("/servlet/LetInServlet").forward(request,
+			// response);
+			request.getRequestDispatcher("/servlet/ShowRoomServlet").forward(
+					request, response);
 		}
 	}
 

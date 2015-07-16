@@ -37,7 +37,18 @@
         </p>
       </div>
 	
+<c:choose>
+<c:when test="${list==111}">
+<c:forEach var="record1" items="${wantroom}">
 
+    <div class="starter-template jumbotron">
+        <h2>${record1.activity}</h2>
+        <p class="lead">小伙伴快来${record1.location}一起${record1.activity}<br> 活动时间：${record1.startTime}到${record1.endTime},一起来吧</p>
+		 <p><a class="btn btn-lg btn-primary btn-shadow" href="/ChatRoom1/servlet/OnlineServlet?roomID=${record1.roomID}" role="button">进群聊聊</a></p>
+    </div>
+</c:forEach>
+</c:when>
+<c:otherwise>
 <c:forEach var="record1" items="${allRoom}">
 
     <div class="starter-template jumbotron">
@@ -46,6 +57,8 @@
 		 <p><a class="btn btn-lg btn-primary btn-shadow" href="/ChatRoom1/servlet/OnlineServlet?roomID=${record1.roomID}" role="button">进群聊聊</a></p>
     </div>
 </c:forEach>
+</c:otherwise>
+</c:choose>
 	<nav class="pagination">
         <a class="btn btn-default" href="#">&larr; 上一页</a>
 		<span class="page-number">第 1 页/共 1 页</span>

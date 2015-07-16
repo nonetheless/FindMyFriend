@@ -18,9 +18,9 @@
     
     <title>所有房间</title>
 
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/starter-template.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/starter-template.css" rel="stylesheet">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/font-awesome.min.css">
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 
@@ -50,9 +50,6 @@
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>

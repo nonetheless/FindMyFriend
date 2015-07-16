@@ -23,9 +23,10 @@ public class OnlineServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
-		String roomID = (String) request.getAttribute("roomID");
+		String roomID = (String) request.getParameter("roomID");
 		System.out.println("OnlineServlet:roomID"+roomID);
-		session.setAttribute("roomID", roomID);
+		if(roomID!=null)
+			session.setAttribute("roomID", roomID);
 		DataService service = new DataServiceimpl();
 		User user = service.getUserByID(userID);
 		ArrayList<String> all = service.searchRoomUser(roomID);

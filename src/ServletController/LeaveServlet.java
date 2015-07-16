@@ -34,7 +34,7 @@ public class LeaveServlet extends HttpServlet {
 		service.writeUserPO(user);
 		service.leave(userID);
 		session.invalidate();
-		request.getRequestDispatcher("/login.jsp").forward(request,
+		request.getRequestDispatcher("/jumpTolog.jsp").forward(request,
 				response);
 	}
 

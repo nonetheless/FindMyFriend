@@ -19,18 +19,18 @@ import DataBase.DataServiceimpl;
 public class GetServlet extends HttpServlet {
 	public static boolean isnew = false;
 	public static ArrayList<Record> twentyrecord;
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+  	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (!isnew) {
+		HttpSession session = request.getSession();
+		String roomID = (String) session.getAttribute("roomID");
+		if (!isnew||roomID==null) {
 			request.setAttribute("record", twentyrecord);
 			request.getRequestDispatcher("/content.jsp").forward(request, response);
-		} else {
+		}
+		else {
 			twentyrecord = new ArrayList<Record>();
 			System.out.println("New Message!");
 			DataService service = new DataServiceimpl();
-			HttpSession session = request.getSession();
-			String roomID = (String) session.getAttribute("roomID");
-			System.out.println("GetServlet:roomID"+roomID);
 			ArrayList<String> allrecord = service.getTwentyMess(roomID);
 			for (int i=allrecord.size()-1;i>=0;i--) {
 				String one = allrecord.get(i);

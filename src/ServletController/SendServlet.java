@@ -23,9 +23,10 @@ public class SendServlet extends HttpServlet {
 		DataService service = new DataServiceimpl();
 		HttpSession session = request.getSession();
 		String username = (String)session.getAttribute("username");
+		System.out.println("SendServlet:"+username);
 		String content = request.getParameter("content");
         String sendTime = new Date().toLocaleString(); 
-        String roomID = (String) session.getAttribute("roomID"); 
+        String roomID = (String) session.getAttribute("roomID");
         Record record = new Record(roomID,sendTime,username,"all",content);
         service.writeChattingPO(record);
         GetServlet.isnew = true;

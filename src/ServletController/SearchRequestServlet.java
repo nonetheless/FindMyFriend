@@ -33,7 +33,7 @@ public class SearchRequestServlet extends HttpServlet {
 		MatchService MCservice = new MatchServiceImp();
 		ArrayList<NewRoom> list = MCservice.match(activityrequest);
 		request.setAttribute("wantroom", list);
-		request.getRequestDispatcher("/searchresult.jsp").forward(request, response);
+		request.getRequestDispatcher("/jumpToPage.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         //language:  'fr',
-        format: 'yyyy-mm-dd;HH:ii;p', 
+        format: 'yyyy-mm-dd;hh:ii', 
         weekStart: 1,
         todayBtn:  1,
 		autoclose: 1,

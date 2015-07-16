@@ -73,11 +73,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="hidden" id="dtp_input1" value="" /><br/>
             </div>      
      <div class="form-group">      
-     <label for="inputplace" class="sr-only">活动内容</label>
-    <input type="text" name="place" id="place" class="form-control" placeholder="活动内容" required autofocus></input>
+     <label for="inputplace" class="sr-only">活动地点</label>
+    <input type="text" name="place" id="place" class="form-control" placeholder="活动地点" required autofocus></input>
     <br>
-    <label for="inputactivity" class="sr-only">活动地点</label>
-    <input type="text" name="activity" class="form-control" placeholder="活动地点" required autofocus></input>
+    <label for="inputactivity" class="sr-only">活动内容</label>
+    <input type="text" name="activity" class="form-control" placeholder="活动内容" required autofocus></input>
     </div>
     <div class="form-group">   
     <button type="reset" class="btn btn-lg btn-block">重置</button>

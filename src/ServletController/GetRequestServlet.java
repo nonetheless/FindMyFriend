@@ -28,13 +28,9 @@ public class GetRequestServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String kind = request.getParameter("kind");
 		String activity = request.getParameter("activity");
-		String starthour = request.getParameter("starthour");
-		String startmin = request.getParameter("startmin");
-		String start = starthour+":"+startmin;
-		String endhour = request.getParameter("endhour");
-		String endmin = request.getParameter("endmin");
-		String end = endhour+":"+endmin;
-		String date = request.getParameter("date");
+		String start = request.getParameter("start").split(";")[1];
+		String end = request.getParameter("end").split(";")[1];
+		String date = request.getParameter("start").split(";")[0];
 		String userID = (String)request.getSession().getAttribute("userID");
 		String location = request.getParameter("place");
 		Request activityrequest = new Request(activity, start, end, date, location);
@@ -50,6 +46,7 @@ public class GetRequestServlet extends HttpServlet {
 			session.setAttribute("roomID", roomID);
 			Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 			DTservice.writeChattingPO(record);
+			DTservice.come(userID, roomID);
 			GetServlet.isnew=true;
 			request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
 		}else if("SearchRoom".equals(kind)){
@@ -57,7 +54,6 @@ public class GetRequestServlet extends HttpServlet {
 			request.setAttribute("wantroom", list);
 			request.getRequestDispatcher("/searchresult.jsp").forward(request, response);
 		}
-		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

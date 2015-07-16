@@ -24,7 +24,6 @@ public class OnlineServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
 		String roomID = (String) request.getParameter("roomID");
-		System.out.println("OnlineServlet:roomID"+roomID);
 		if(roomID!=null)
 			session.setAttribute("roomID", roomID);
 		DataService service = new DataServiceimpl();

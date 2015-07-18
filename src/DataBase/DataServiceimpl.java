@@ -90,6 +90,11 @@ public class DataServiceimpl implements DataService {
 		return DatabaseController.getRoomName();
 	}
 
+	@Override
+	public int getPNumByID(String ID) {
+		return DatabaseController.getPNumByID(ID);
+	}
+
 	//public void subNum(String ID) {
 		//DatabaseController.subNum(ID);
 	//}

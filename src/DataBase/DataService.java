@@ -27,4 +27,5 @@ public interface DataService {
 	public ArrayList<String> searchRoomUser(String roomID);
 	public void deleteRoom(String ID);
 	public ArrayList<String> getRoomName();
+	public int getPNumByID(String ID);
 }

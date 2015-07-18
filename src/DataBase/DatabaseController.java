@@ -287,9 +287,9 @@ public class DatabaseController {
 	public static void main(String[]args){
 		setConnection();
 		//come("wl781352788","1");
-		leave("wl781352788");
+		//leave("wl781352788");
 		//getTwentyMess("10000");
-		System.out.print("y");
+		System.out.print(getPNumByID("0"));
 		//writeChattingPO("10000","1990-10-23","333","dafeiji","509");
 		//System.out.print("Y");
 	}
@@ -315,5 +315,19 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 		return allRoom;
+	}
+	public static int getPNumByID(String ID){
+		String sql="select pnum from roomtable where roomID='"+ID+"';";
+		int temp=0;
+		try {
+			ResultSet rs=statReader.executeQuery(sql);
+			while(rs.next()){
+				temp=rs.getInt("pnum");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return temp;
 	}
 }

@@ -39,6 +39,11 @@ public class GetRequestServlet extends HttpServlet {
 		User user = DTservice.getUserByID(userID);
 		if("CreateRoom".equals(kind)){
 			User create = DTservice.getUserByID(userID);
+			if(create.getState()==1){
+				return;
+			}
+			create.setState(1);
+			DTservice.writeUserPO(create);
 			activityrequest.setCreater( new NewUser(create));
 			String roomID = MCservice.Createroom(activityrequest);
 			request.setAttribute("roomID", roomID);

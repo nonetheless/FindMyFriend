@@ -27,8 +27,7 @@ public class LetInServlet extends HttpServlet {
 		String userID = (String) session.getAttribute("userID");
 		DataService DTservice = new DataServiceimpl();
 		if (DTservice.getUserByID(userID).getState() == 1) {
-			request.getRequestDispatcher("/page.jsp")
-					.forward(request, response);
+			return;
 		} else {
 			String roomID = request.getParameter("roomID");
 			session.setAttribute("roomID", roomID);

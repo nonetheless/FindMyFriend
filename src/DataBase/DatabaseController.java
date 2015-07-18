@@ -36,8 +36,8 @@ public class DatabaseController {
 			}
 		}
 	}*/
-	public  static void  writeUserPO(String userID,String userName,String password,int state,String head){
-		String sql="insert into UserTable values('"+userID+"','"+userName+"','"+password+"','"+state+"','"+head+"');";
+	public  static void  writeUserPO(String userID,String userName,String password,int state){
+		String sql="insert into UserTable values('"+userID+"','"+userName+"','"+password+"','"+state+"');";
 		try {
 			statWrite1.execute(sql);
 		} catch (SQLException e) {
@@ -83,7 +83,6 @@ public class DatabaseController {
 				u.setPassword(rs.getString("password"));
 				u.setState(rs.getInt("state"));
 				u.setUserName(rs.getString("userName"));
-				u.setHead(rs.getString("head"));
 			}
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block

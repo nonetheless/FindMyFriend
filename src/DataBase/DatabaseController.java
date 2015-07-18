@@ -281,6 +281,7 @@ public class DatabaseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(result.size());
 		return result;
 	}
 	public static void main(String[]args){

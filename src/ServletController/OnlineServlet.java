@@ -35,10 +35,11 @@ public class OnlineServlet extends HttpServlet {
 			String username = one.split("//")[1];
 			map.put(ID, username);
 		}
+		System.out.println("map size:"+map.size());
 		request.setAttribute("allUser", map);
-		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
+		/*Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 		service.writeChattingPO(record);
-		GetServlet.isnew=true;
+		GetServlet.isnew=true;*/
 		request.getRequestDispatcher("/jump.jsp").forward(request, response);
 	}
 

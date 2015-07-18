@@ -52,7 +52,7 @@ public class GetRequestServlet extends HttpServlet {
 		}else if("SearchRoom".equals(kind)){
 			ArrayList<NewRoom> list = MCservice.match(activityrequest);
 			request.setAttribute("wantroom", list);
-			request.getRequestDispatcher("/searchresult.jsp").forward(request, response);
+			request.getRequestDispatcher("/jumpToPage.jsp").forward(request, response);
 		}
 	}
 

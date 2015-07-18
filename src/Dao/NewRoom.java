@@ -62,6 +62,7 @@ public class NewRoom {
 		}
 	}
 	public Room toRoom(){
+		DataService data = new DataServiceimpl();
 		String start = this.createRequest.getTime().getStartTime();
 		String end = this.createRequest.getTime().getEndTime();
 		String date = this.createRequest.getTime().getDate();
@@ -69,7 +70,8 @@ public class NewRoom {
 		String location = this.createRequest.getPlace().getName();
 		
 		String name = date+" "+start+";"+date+" "+end+";"+activity+";"+location;
-		
-		return new Room(this.id,name);
+		Room room = new Room(this.id,name);
+		room.setPnum(data.getPNumByID(this.id));
+		return room;
 	}
 }

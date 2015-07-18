@@ -1,6 +1,3 @@
-/Controller/
 /Dao/
-/DataBase/
-/MatchController/
-/.DS_Store
-/Utils/
+/LogicController/
+/ServletController/

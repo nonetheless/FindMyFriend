@@ -15,7 +15,7 @@ public class Room {
 		this.endTime=roomName.split(";")[1];
 		this.activity=roomName.split(";")[2];
 		this.location=roomName.split(";")[3];
-		this.setPnum(1);
+		this.setPnum(0);
 	}
 	public String getRoomID() {
 		return roomID;

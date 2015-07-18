@@ -285,8 +285,10 @@ public class DatabaseController {
 	}
 	public static void main(String[]args){
 		setConnection();
+		//come("wl781352788","1");
+		leave("wl781352788");
 		//getTwentyMess("10000");
-		System.out.print(getTwentyMess("10000"));
+		System.out.print("y");
 		//writeChattingPO("10000","1990-10-23","333","dafeiji","509");
 		//System.out.print("Y");
 	}

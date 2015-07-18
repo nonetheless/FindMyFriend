@@ -29,15 +29,15 @@ public class LeaveServlet extends HttpServlet {
 		String roomID = (String) session.getAttribute("roomID");
 		User user = service.getUserByID(userID);
 		user.setState(0);
-		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"entered room!");
+		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"leaved room!");
 		service.writeChattingPO(record);
 		service.writeUserPO(user);
 		service.leave(userID);
 		session.invalidate();
-		request.getRequestDispatcher("/login.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("/jumpTolog.jsp").forward(request,response);
 	}
 
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

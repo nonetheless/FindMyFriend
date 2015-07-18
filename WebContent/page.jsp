@@ -32,12 +32,23 @@
         <h1>24点团队</h1>
         <p>生命的复杂，就在于不可预期，不容解释，不能厘清。好像走在迷雾里，看不见任何方向，没有人可以判别前面是否断崖或绝路。生命只能持续走下去，直到雾散了，答案才终得明白。from 《谁在暗中眨眼睛》</p>
         <p>
-          <a class="btn btn-lg btn-primary" href="create.jsp" role="button">创建房间 &raquo;</a>
-          <a class="btn btn-lg btn-primary" href="search.jsp" role="button">搜索房间 &raquo;</a>
+          <a class="btn btn-lg btn-primary" href="match.jsp?action=transparams&kindName=CreateRoom" role="button">创建房间 &raquo;</a>
+          <a class="btn btn-lg btn-primary" href="match.jsp?action=transparams&kindName=SearchRoom" role="button">搜索房间 &raquo;</a>
         </p>
       </div>
 	
+<c:choose>
+<c:when test="${list==111}">
+<c:forEach var="record1" items="${wantroom}">
 
+    <div class="starter-template jumbotron">
+        <h2>${record1.activity}</h2>
+        <p class="lead">小伙伴快来${record1.location}一起${record1.activity}<br> 活动时间：${record1.startTime}到${record1.endTime},一起来吧</p>
+		 <p><a class="btn btn-lg btn-primary btn-shadow" href="/ChatRoom1/servlet/OnlineServlet?roomID=${record1.roomID}" role="button">进群聊聊</a></p>
+    </div>
+</c:forEach>
+</c:when>
+<c:otherwise>
 <c:forEach var="record1" items="${allRoom}">
 
     <div class="starter-template jumbotron">
@@ -46,6 +57,8 @@
 		 <p><a class="btn btn-lg btn-primary btn-shadow" href="/ChatRoom1/servlet/OnlineServlet?roomID=${record1.roomID}" role="button">进群聊聊</a></p>
     </div>
 </c:forEach>
+</c:otherwise>
+</c:choose>
 	<nav class="pagination">
         <a class="btn btn-default" href="#">&larr; 上一页</a>
 		<span class="page-number">第 1 页/共 1 页</span>

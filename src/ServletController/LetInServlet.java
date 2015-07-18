@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Record;
+import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
 import LogicController.MatchService;

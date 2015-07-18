@@ -51,7 +51,7 @@ public class GetRequestServlet extends HttpServlet {
 			session.setAttribute("roomID", roomID);
 			Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 			DTservice.writeChattingPO(record);
-			DTservice.come(userID, roomID);
+			//DTservice.come(userID, roomID);
 			GetServlet.isnew=true;
 			request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
 		}else if("SearchRoom".equals(kind)){

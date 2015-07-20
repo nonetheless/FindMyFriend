@@ -25,7 +25,37 @@
 </head>
 
 <body>
-<%@ include file="header.jsp" %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">24 oclock</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/ChatRoom1/page.jsp">热门活动</a></li>
+                <li><a href="#about">个人中心</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form name="form2" action="Messages?kind=Search" onSubmit="return check()" class="navbar-form navbar-right">
+            		<div class="form-group">
+             		  <input name="simAct" type="text" placeholder="活动" class="form-control">
+            		</div>
+            		<button type="submit" class="btn btn-success">搜索</button>
+          		</form>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 
 <div class="container">
 	<div class="jumbotron">
@@ -67,6 +97,8 @@
 </div><!-- /.container -->
 
 <!-- Bootstrap core JavaScript
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 ================================================== -->
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

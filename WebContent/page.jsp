@@ -45,7 +45,7 @@
                 <li><a href="#contact">关于我们</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <form name="form2" action="/ChatRoom1/servlet/GetRequestServlet?kind=Search" onSubmit="return check()" class="navbar-form navbar-right">
+                <form name="form2" action="/ChatRoom1/servlet/SearchServlet" onSubmit="return check()" class="navbar-form navbar-right">
             		<div class="form-group">
              		  <input name="simAct" type="text" placeholder="活动" class="form-control">
             		</div>
@@ -59,7 +59,7 @@
 
 <div class="container">
 	<div class="jumbotron">
-        <h1>24点团队${list}</h1>
+        <h1>24点团队</h1>
         <p>生命的复杂，就在于不可预期，不容解释，不能厘清。好像走在迷雾里，看不见任何方向，没有人可以判别前面是否断崖或绝路。生命只能持续走下去，直到雾散了，答案才终得明白。from 《谁在暗中眨眼睛》</p>
         <p>
           <a class="btn btn-lg btn-primary" href="match.jsp?action=transparams&kindName=CreateRoom" role="button">创建房间 &raquo;</a>

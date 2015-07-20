@@ -18,7 +18,7 @@ public class SearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String detail = request.getParameter("simAct");
 		DataService service = new DataServiceimpl();
-		ArrayList<String> allRoom = service.showRoom();
+		ArrayList<String> allRoom = service.getRoomName();
 		ArrayList<String> wantRoom = new ArrayList<String>();
 		for(String one:allRoom){
 			if(one.indexOf(detail)!=-1)

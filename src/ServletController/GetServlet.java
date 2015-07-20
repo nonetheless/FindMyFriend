@@ -2,6 +2,8 @@ package ServletController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,20 +20,20 @@ import DataBase.DataServiceimpl;
 
 public class GetServlet extends HttpServlet {
 	public static boolean isnew = false;
-	public static ArrayList<Record> twentyrecord;
+	public static Map<String,ArrayList<Record>> twentyrecord = new LinkedHashMap<String, ArrayList<Record>>();
   	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String roomID = (String) session.getAttribute("roomID");
-		if (!isnew||roomID==null) {
+		if (!isnew) {
 			request.setAttribute("record", twentyrecord);
 			request.getRequestDispatcher("/content.jsp").forward(request, response);
 		}
 		else {
-			twentyrecord = new ArrayList<Record>();
 			System.out.println("New Message!");
 			DataService service = new DataServiceimpl();
 			ArrayList<String> allrecord = service.getTwentyMess(roomID);
+			ArrayList<Record> all = new ArrayList<Record>();
 			for (int i=allrecord.size()-1;i>=0;i--) {
 				String one = allrecord.get(i);
 				String[] att = one.split("//");
@@ -41,7 +43,8 @@ public class GetServlet extends HttpServlet {
 				record.setSpeaker(att[2]);
 				record.setListener(att[3]);
 				record.setContent(att[4]);
-				twentyrecord.add(record);
+				all.add(record);
+				twentyrecord.put(roomID,all);
 			}
 			request.setAttribute("record", twentyrecord);
 			isnew = false;

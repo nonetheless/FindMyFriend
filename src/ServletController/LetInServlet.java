@@ -38,6 +38,7 @@ public class LetInServlet extends HttpServlet {
 					"System message", "all", username + "entered room!");
 			DTservice.writeChattingPO(record);
 			GetServlet.isnew = true;
+			OnlineServlet.newcome = true;
 			request.getRequestDispatcher("/servlet/OnlineServlet").forward(
 					request, response);
 		}

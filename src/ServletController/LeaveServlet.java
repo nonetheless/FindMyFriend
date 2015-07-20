@@ -25,11 +25,10 @@ public class LeaveServlet extends HttpServlet {
 		DataService service = new DataServiceimpl();
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
-		String username = (String) session.getAttribute("username");
 		String roomID = (String) session.getAttribute("roomID");
 		User user = service.getUserByID(userID);
 		user.setState(0);
-		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", username+"leaved room!");
+		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"leaved room!");
 		service.writeChattingPO(record);
 		service.writeUserPO(user);
 		service.leave(userID);

@@ -65,6 +65,18 @@ public class GetRequestServlet extends HttpServlet {
 			request.setAttribute("list", 111);
 			request.setAttribute("wantroom", list1);
 			request.getRequestDispatcher("/page.jsp").forward(request, response);
+		}else if("Search".equals(kind)){
+			String detail = request.getParameter("");
+			DataService service = new DataServiceimpl();
+			ArrayList<String> allRoom = service.showRoom();
+			ArrayList<String> wantRoom = new ArrayList<String>();
+			for(String one:allRoom){
+				if(one.indexOf(detail)!=-1)
+					wantRoom.add(one);
+			}
+			request.setAttribute("list", 111);
+			request.setAttribute("wantroom", wantRoom);
+			request.getRequestDispatcher("/page.jsp").forward(request, response);
 		}
 	}
 

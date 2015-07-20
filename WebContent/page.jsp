@@ -45,7 +45,7 @@
                 <li><a href="#contact">关于我们</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <form name="form2" action="Messages?kind=Search" onSubmit="return check()" class="navbar-form navbar-right">
+                <form name="form2" action="/ChatRoom1/servlet/GetRequestServlet?kind=Search" onSubmit="return check()" class="navbar-form navbar-right">
             		<div class="form-group">
              		  <input name="simAct" type="text" placeholder="活动" class="form-control">
             		</div>

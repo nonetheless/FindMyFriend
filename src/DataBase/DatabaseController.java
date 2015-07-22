@@ -180,6 +180,11 @@ public class DatabaseController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			try {
+				statWrite2.execute("delete from chat where roomID='"+ID+"';");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	public static boolean checkRoomID(String ID){

@@ -14,8 +14,9 @@
  %>
 <%
 	DataService service = new DataServiceimpl();
-	if(OnlineServlet.newcome){
-		ArrayList<String> all = service.searchRoomUser((String)session.getAttribute("roonID"));
+	HttpSession session1 = request.getSession();
+	if(session.getAttribute("roomID")!=null){
+		ArrayList<String> all = service.searchRoomUser((String)session.getAttribute("roomID"));
 		for(String one:all){
 			String ID = one.split("//")[0];
 			String username = one.split("//")[1];

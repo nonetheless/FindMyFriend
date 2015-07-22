@@ -9,20 +9,20 @@ public class NewRoom {
 	
 	private Request createRequest;
 	private String id;
-	private ArrayList<NewUser> userList;
+	private ArrayList<User> userList;
 	
 	public NewRoom(Room room){
 		this.createRequest = new Request(room.getActivity(),room.getStartTime(),room.getEndTime(),room.getStartTime().split(" ")[0],room.getLocation());
 		this.id = room.getRoomID();
-		userList = new ArrayList<NewUser>();
+		userList = new ArrayList<User>();
 	}
 	public NewRoom(String id,String start,String end,String activity,String location){
 		this.createRequest = new Request(activity,start.split(" ")[1],end.split(" ")[1],end.split(" ")[0],location);
 		this.id = id;
-		userList = new ArrayList<NewUser>();
+		userList = new ArrayList<User>();
 	}
 	public NewRoom(Request createRequest,String id){
-		this.userList = new ArrayList<NewUser>();
+		this.userList = new ArrayList<User>();
 		this.createRequest = createRequest;
 		this.id = id;
 		userList.add(createRequest.getCreater());
@@ -33,10 +33,10 @@ public class NewRoom {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ArrayList<NewUser> getUserList() {
+	public ArrayList<User> getUserList() {
 		return userList;
 	}
-	public void setUserList(ArrayList<NewUser> userList) {
+	public void setUserList(ArrayList<User> userList) {
 		this.userList = userList;
 	}
 	public Request getCreateRequest() {
@@ -45,18 +45,18 @@ public class NewRoom {
 	public void setCreateRequest(Request createRequest) {
 		this.createRequest = createRequest;
 	}
-	public void addToList(NewUser newUser){
+	public void addToList(User newUser){
 		this.userList.add(newUser);
 		DataService data = new DataServiceimpl();
-		data.come(newUser.getId(), this.id);
+		data.come(newUser.getUserID(), this.id);
 	}
-	public void subInList(NewUser newUser){
+	public void subInList(User newUser){
 		for(int i = 0;i<this.userList.size();i++){
-			NewUser temp = userList.get(i);
+			User temp = userList.get(i);
 			if(temp.equals(newUser)){
 				this.userList.remove(i);
 				DataService data = new DataServiceimpl();
-				data.leave(newUser.getId());
+				data.leave(newUser.getUserID());
 				break;
 			}
 		}

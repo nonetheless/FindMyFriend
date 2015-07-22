@@ -7,12 +7,12 @@ public class Request {
 	private Activity activity;
 	private ActivityTime time;
 	private ActivityPlace place;
-	private NewUser creater;
+	private User creater;
 	
 	public Request(String activity,String start,String end,String date,User user,String location){
 		this.activity = Activity.valueOf(activity);
 		this.time = new ActivityTime(start,end,date);
-		this.creater = new NewUser(user);
+		this.creater = user;
 		this.place = new ActivityPlace(location);
 	}
 	public Request(String activity,String start,String end,String date,String location){
@@ -39,10 +39,10 @@ public class Request {
 	public void setPlace(ActivityPlace place) {
 		this.place = place;
 	}
-	public NewUser getCreater() {
+	public User getCreater() {
 		return creater;
 	}
-	public void setCreater(NewUser creater) {
+	public void setCreater(User creater) {
 		this.creater = creater;
 	}
 	

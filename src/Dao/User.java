@@ -4,6 +4,7 @@ public class User {
 	private String userName;
 	private String password;
 	private int state;
+	private String head;
 	public User(String userID,String username,String password){
 		this.userID =userID;
 		this.userName = username;
@@ -41,5 +42,13 @@ public class User {
 
 	public void setState(int state) {
 		this.state = state;
+	}
+
+	public String getHead() {
+		return head;
+	}
+
+	public void setHead(String head) {
+		this.head = head;
 	}
 }

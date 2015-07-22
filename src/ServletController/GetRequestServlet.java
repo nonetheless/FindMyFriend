@@ -14,6 +14,7 @@ import Dao.NewRoom;
 import Dao.NewUser;
 import Dao.Record;
 import Dao.Request;
+import Dao.Room;
 import Dao.User;
 import DataBase.DataService;
 import DataBase.DataServiceimpl;
@@ -51,13 +52,19 @@ public class GetRequestServlet extends HttpServlet {
 			session.setAttribute("roomID", roomID);
 			Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 			DTservice.writeChattingPO(record);
-			//DTservice.come(userID, roomID);
 			GetServlet.isnew=true;
+			OnlineServlet.newcome = true;
 			request.getRequestDispatcher("/servlet/OnlineServlet").forward(request, response);
 		}else if("SearchRoom".equals(kind)){
 			ArrayList<NewRoom> list = MCservice.match(activityrequest);
-			request.setAttribute("wantroom", list);
-			request.getRequestDispatcher("/jumpToPage.jsp").forward(request, response);
+			ArrayList<Room> list1 = new ArrayList<Room>();
+			int i = list.size();
+			for(int j=0;j<i;j++){
+				list1.add(list.get(j).toRoom());
+			}
+			request.setAttribute("list", 111);
+			request.setAttribute("wantroom", list1);
+			request.getRequestDispatcher("/page.jsp").forward(request, response);
 		}
 	}
 

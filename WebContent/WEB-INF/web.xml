@@ -47,6 +47,16 @@
     <servlet-name>OnlineServlet</servlet-name>
     <servlet-class>ServletController.OnlineServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpheadServlet</servlet-name>
+    <servlet-class>ServletController.UpheadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>ServletController.SearchServlet</servlet-class>
+  </servlet>
+
+
 
   <servlet-mapping>
     <servlet-name>OnlineServlet</servlet-name>
@@ -87,6 +97,14 @@
   <servlet-mapping>
     <servlet-name>LetInServlet</servlet-name>
     <url-pattern>/servlet/LetInServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpheadServlet</servlet-name>
+    <url-pattern>/servlet/UpheadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/servlet/SearchServlet</url-pattern>
   </servlet-mapping>
   
   <filter>

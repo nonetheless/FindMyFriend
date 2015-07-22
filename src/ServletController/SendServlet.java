@@ -23,7 +23,6 @@ public class SendServlet extends HttpServlet {
 		DataService service = new DataServiceimpl();
 		HttpSession session = request.getSession();
 		String username = (String)session.getAttribute("username");
-		System.out.println("SendServlet:"+username);
 		String content = request.getParameter("content");
         String sendTime = new Date().toLocaleString(); 
         String roomID = (String) session.getAttribute("roomID");

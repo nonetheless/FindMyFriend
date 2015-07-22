@@ -18,18 +18,16 @@ import DataBase.DataService;
 import DataBase.DataServiceimpl;
 
 public class OnlineServlet extends HttpServlet {
-
+	
+	public static boolean newcome = false;
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
-		String roomID = (String) request.getParameter("roomID");
+		roomID = (String) request.getParameter("roomID");
 		if(roomID==null)
-			roomID = (String) request.getAttribute("roomID");
-		System.out.println("roomID:"+roomID);
-		if(roomID!=null)
-			session.setAttribute("roomID", roomID);
-		DataService service = new DataServiceimpl();
+			roomID = (String) request.getAttribute("roomID");*/
+		/*DataService service = new DataServiceimpl();
 		User user = service.getUserByID(userID);
 		ArrayList<String> all = service.searchRoomUser(roomID);
 		Map<String,String> map = new HashMap<String, String>();
@@ -39,11 +37,11 @@ public class OnlineServlet extends HttpServlet {
 			map.put(ID, username);
 		}
 		System.out.println("map size:"+map.size());
-		request.setAttribute("allUser", map);
+		request.setAttribute("allUser", map);*/
 		/*Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
 		service.writeChattingPO(record);
 		GetServlet.isnew=true;*/
-		request.getRequestDispatcher("/jump.jsp").forward(request, response);
+		request.getRequestDispatcher("/main.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

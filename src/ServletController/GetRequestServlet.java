@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.NewRoom;
-import Dao.NewUser;
 import Dao.Record;
 import Dao.Request;
 import Dao.Room;
@@ -45,7 +44,7 @@ public class GetRequestServlet extends HttpServlet {
 			}
 			create.setState(1);
 			DTservice.writeUserPO(create);
-			activityrequest.setCreater( new NewUser(create));
+			activityrequest.setCreater(create);
 			String roomID = MCservice.Createroom(activityrequest);
 			request.setAttribute("roomID", roomID);
 			HttpSession session = request.getSession();

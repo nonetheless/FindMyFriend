@@ -41,7 +41,7 @@ public class MatchController {
 		this.roomList.add(room);
 		Room temp = room.toRoom();
 		data.writeRoomPO(temp);
-		data.come(aRequest.getCreater().getId(), room.getId());
+		data.come(aRequest.getCreater().getUserID(), room.getId());
 		return room.getId();
 	}
 	

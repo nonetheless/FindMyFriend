@@ -1,3 +1,5 @@
+<%@page import="DataBase.DataServiceimpl"%>
+<%@page import="DataBase.DataService"%>
 <%@page import="java.util.LinkedHashMap"%>
 <%@page import="Dao.Record"%>
 <%@page import="java.util.ArrayList"%>
@@ -13,10 +15,10 @@
 <c:forEach var="record" items="${allrecord }">
 <!--左右-->
 <c:if test="${record.speaker.equals(username)}">
-<li class="odd" > <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">${record.speaker}</span></a><div class="reply-content-box"><span class="reply-time">${record.time}</span> <div class="reply-content pr"><span class="arrow">&nbsp;</span>${record.content }</div></div></li>
+<li class="odd" > <a class="user" href="#"><img class="img-responsive avatar_" src="headImage/${record.head }" alt=""><span class="user-name">${record.speaker}</span></a><div class="reply-content-box"><span class="reply-time">${record.time}</span> <div class="reply-content pr"><span class="arrow">&nbsp;</span>${record.content }</div></div></li>
 </c:if>
 <c:if test="${!record.speaker.equals(username)}">
-<li class="even" > <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">${record.speaker}</span></a><div class="reply-content-box"><span class="reply-time">${record.time}</span> <div class="reply-content pr"><span class="arrow">&nbsp;</span>${record.content }</div></div></li>
+<li class="even" > <a class="user" href="#"><img class="img-responsive avatar_" src="headImage/${record.head }" alt=""><span class="user-name">${record.speaker}</span></a><div class="reply-content-box"><span class="reply-time">${record.time}</span> <div class="reply-content pr"><span class="arrow">&nbsp;</span>${record.content }</div></div></li>
 </c:if>
 </c:forEach>
 

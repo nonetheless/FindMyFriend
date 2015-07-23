@@ -41,8 +41,9 @@ public class GetServlet extends HttpServlet {
 				record.setChatroom(att[0]);
 				record.setTime(att[1]);
 				record.setSpeaker(att[2]);
-				record.setListener(att[3]);
-				record.setContent(att[4]);
+				record.setHead(att[3]);
+				record.setListener(att[4]);
+				record.setContent(att[5]);
 				all.add(record);
 				twentyrecord.put(roomID,all);
 			}

@@ -49,7 +49,7 @@ public class GetRequestServlet extends HttpServlet {
 			request.setAttribute("roomID", roomID);
 			HttpSession session = request.getSession();
 			session.setAttribute("roomID", roomID);
-			Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"entered room!");
+			Record record = new Record(roomID, new Date().toLocaleString(), "System message","avatar-1.pngd", "all", user.getUserName()+"entered room!");
 			DTservice.writeChattingPO(record);
 			GetServlet.isnew=true;
 			OnlineServlet.newcome = true;

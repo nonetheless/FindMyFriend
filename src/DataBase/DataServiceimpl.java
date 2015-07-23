@@ -21,8 +21,14 @@ public class DataServiceimpl implements DataService {
 	public void writeUserPO(User up) {
 		DatabaseController.writeUserPO(up.getUserID(), up.getUserName(),up.getPassword(),up.getState(),up.getHead());
 	}
-	public void updateUserPO(String ID,String name){
+	public void updateUserName(String ID,String name){
 		DatabaseController.changeUserName(ID, name);
+	}
+	public void updatePassword(String ID,String password){
+		DatabaseController.changePassword(ID, password);
+	}
+	public void updateUserHead(String ID,String head){
+		DatabaseController.changeUserHead(ID, head);
 	}
 
 	//public void addNum(String ID) {

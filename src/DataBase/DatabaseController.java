@@ -129,6 +129,22 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 	}
+	public static void changePassword(String ID,String password){
+		String sql="update usertable set password="+password+"where userID='"+ID+"';";
+		try {
+			statWrite1.execute(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void changeUserHead(String ID,String head){
+		String sql="update usertable set head="+head+"where userID='"+ID+"';";
+		try {
+			statWrite1.execute(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public  static void  writeRoomPO(String ID,String name,String stime,String etime,String act,String loa,int pnum){
 		String sql="insert into roomtable values('"+ID+"','"+name+"','"+stime+"','"+etime+"','"+act+"','"+loa+"','"+pnum+"');";
 		try {

@@ -11,7 +11,9 @@ public interface DataService {
 	public boolean IsUserExist(String userID,String password);
 	public boolean checkUser(String ID);
 	public void writeUserPO(User up);
-	public void updateUserPO(String ID,String name);
+	public void updateUserName(String ID,String name);
+	public void updatePassword(String ID,String password);
+	public void updateUserHead(String ID,String head);
 	//public void addNum(String ID);
 	//public void subNum(String ID);
 	public void writeChattingPO(Record cp);

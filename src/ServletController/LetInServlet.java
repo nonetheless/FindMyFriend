@@ -35,7 +35,7 @@ public class LetInServlet extends HttpServlet {
 			MCservice.letIn(userID, roomID);
 			String username = DTservice.getUserByID(userID).getUserName();
 			Record record = new Record(roomID, new Date().toLocaleString(),
-					"System message", "all", username + "entered room!");
+					"System message","avatar-1.png", "all", username + "entered room!");
 			DTservice.writeChattingPO(record);
 			GetServlet.isnew = true;
 			OnlineServlet.newcome = true;

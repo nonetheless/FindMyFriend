@@ -6,12 +6,30 @@ public class Record {
 	private String speaker;
 	private String listener;
 	private String content;
-	public Record(String chatroom,String time,String speaker,String listener,String content){
+	private String head;
+	public String getChatroomID() {
+		return chatroomID;
+	}
+
+	public void setChatroomID(String chatroomID) {
+		this.chatroomID = chatroomID;
+	}
+
+	public String getHead() {
+		return head;
+	}
+
+	public void setHead(String head) {
+		this.head = head;
+	}
+
+	public Record(String chatroom,String time,String speaker,String head,String listener,String content){
 		this.listener=listener;
 		this.chatroomID=chatroom;
 		this.time=time;
 		this.speaker=speaker;
 		this.content=content;
+		this.head = head;
 	}
 	
 	public Record(){

@@ -10,7 +10,7 @@ public class User {
 		this.userName = username;
 		this.password = password;
 		setState(0);
-		
+		this.head = "avatar-1.png";
 	}
 	
 	public User() {

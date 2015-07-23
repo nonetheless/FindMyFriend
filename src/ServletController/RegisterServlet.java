@@ -20,7 +20,6 @@ public class RegisterServlet extends HttpServlet {
 		String userID = request.getParameter("userID");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		System.out.println(username);
 		DataService service = new DataServiceimpl();
 		PrintWriter out = response.getWriter();
 		if(!service.checkUser(userID)){

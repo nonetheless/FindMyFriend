@@ -28,7 +28,7 @@ public class LeaveServlet extends HttpServlet {
 		String roomID = (String) session.getAttribute("roomID");
 		User user = service.getUserByID(userID);
 		user.setState(0);
-		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "all", user.getUserName()+"leaved room!");
+		Record record = new Record(roomID, new Date().toLocaleString(), "System message", "avatar-1.png","all", user.getUserName()+"leaved room!");
 		service.writeChattingPO(record);
 		service.writeUserPO(user);
 		service.leave(userID);

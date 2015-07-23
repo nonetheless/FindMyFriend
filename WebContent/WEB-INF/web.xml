@@ -55,6 +55,11 @@
     <servlet-name>SearchServlet</servlet-name>
     <servlet-class>ServletController.SearchServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>codeServlet</servlet-name>
+    <servlet-class>ServletController.code</servlet-class>
+  </servlet>
+
 
 
 
@@ -105,6 +110,10 @@
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/servlet/SearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>codeServlet</servlet-name>
+    <url-pattern>/servlet/code</url-pattern>
   </servlet-mapping>
   
   <filter>

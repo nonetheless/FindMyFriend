@@ -7,7 +7,7 @@ import Dao.Room;
 import Dao.User;
 
 public interface DataService {
-	public void runDataBase();//运行数据库并发写
+	public void runDataBase();
 	public boolean IsUserExist(String userID,String password);
 	public boolean checkUser(String ID);
 	public void writeUserPO(User up);

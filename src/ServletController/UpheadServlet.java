@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DataBase.DataService;
+import DataBase.DataServiceimpl;
+
 import com.jspsmart.upload.SmartUpload;
 import com.jspsmart.upload.SmartUploadException;
 import com.sun.image.codec.jpeg.JPEGCodec;
@@ -21,6 +24,7 @@ public class UpheadServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userID = (String) request.getSession().getAttribute("userID");
+		DataService service = new DataServiceimpl();
 		ServletConfig config = this.getServletConfig();
         SmartUpload mySmartUpload = new SmartUpload();//上传图片的工具类
         mySmartUpload.initialize(config, request, response);// 初始化

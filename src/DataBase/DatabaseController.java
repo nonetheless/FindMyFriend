@@ -153,8 +153,8 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 	}
-	public  static void  writeChattingPO(String ID,String time,String speaker,String listener,String content){
-		String sql="insert into chat values('"+ID+"','"+time+"','"+speaker+"','"+listener+"','"+content+"');";
+	public  static void  writeChattingPO(String ID,String time,String speaker,String listener,String content,String Shead){
+		String sql="insert into chat values('"+ID+"','"+time+"','"+speaker+"','"+listener+"','"+content+"','"+Shead+"');";
 		try {
 			statWrite3.execute(sql);
 		} catch (SQLException e) {
@@ -225,7 +225,7 @@ public class DatabaseController {
 			ResultSet rs=statReader.executeQuery(sql);
 			while(rs.next()){
 				i++;
-				String temp=rs.getString("roomID")+"//"+rs.getString("time")+"//"+rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("content");
+				String temp=rs.getString("roomID")+"//"+rs.getString("time")+"//"+rs.getString("speaker")+"//"+rs.getString("listener")+"//"+rs.getString("content")+"//"+rs.getString("Shead");
 				System.out.println(temp);
 				mes.add(temp);
 				if(i>20){

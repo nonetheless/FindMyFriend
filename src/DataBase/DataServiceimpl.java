@@ -38,7 +38,7 @@ public class DataServiceimpl implements DataService {
 
 	@Override
 	public void writeChattingPO(Record cp) {
-		DatabaseController.writeChattingPO(cp.getChatroom(), cp.getTime(), cp.getSpeaker(), cp.getListener(), cp.getContent());
+		DatabaseController.writeChattingPO(cp.getChatroom(), cp.getTime(), cp.getSpeaker(), cp.getListener(), cp.getContent(),cp.getHead());
 		
 	}
 

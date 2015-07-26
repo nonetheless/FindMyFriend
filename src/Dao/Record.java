@@ -23,7 +23,7 @@ public class Record {
 		this.head = head;
 	}
 
-	public Record(String chatroom,String time,String speaker,String head,String listener,String content){
+	public Record(String chatroom,String time,String speaker,String listener,String content,String head){
 		this.listener=listener;
 		this.chatroomID=chatroom;
 		this.time=time;

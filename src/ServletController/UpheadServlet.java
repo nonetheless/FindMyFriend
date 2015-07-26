@@ -4,48 +4,52 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DataBase.DataService;
-import DataBase.DataServiceimpl;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.jspsmart.upload.SmartUpload;
-import com.jspsmart.upload.SmartUploadException;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class UpheadServlet extends HttpServlet {
-
+	//private String savePath = "headImages";
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userID = (String) request.getSession().getAttribute("userID");
-		DataService service = new DataServiceimpl();
-		ServletConfig config = this.getServletConfig();
-        SmartUpload mySmartUpload = new SmartUpload();//上传图片的工具类
-        mySmartUpload.initialize(config, request, response);// 初始化
-        try {
-            mySmartUpload.upload();
-            com.jspsmart.upload.File f1 = mySmartUpload.getFiles().getFile(0);
-            String imageName = f1.getFileName();
-            int idx = imageName.lastIndexOf(".");
-            String imageType = imageName.substring(idx, imageName.length());
-            String newImageName = userID+imageType;
-            String path = request.getRealPath("/headImage");
-            File file = new File(path);
-            if(!file.exists()){
-                file.mkdirs();
-            }
-            String imagePath = path+File.separator+newImageName;
-            this.reduceImageEqualProportion(imagePath, imagePath);
-             
-        } catch (SmartUploadException e) {
-            e.printStackTrace();
-        }
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		try{
+			List items = upload.parseRequest(request);
+			java.util.Iterator itr = items.iterator();
+			while(itr.hasNext()){
+				FileItem item = (FileItem)itr.next();
+				if(item.isFormField()){
+					System.out.println("纯表单");
+				}else{
+					if(item.getName()!=null&&!item.getName().equals("")){
+						System.out.println("文件大小："+item.getSize());
+						System.out.println("文件类型："+item.getContentType());
+						System.out.println("文件名："+item.getName());
+						File file = new File(request.getRealPath("/headImages")+item.getName());
+						item.write(file);
+					}
+					else{
+						System.out.println("空文件");
+					}
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
